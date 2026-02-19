@@ -14,53 +14,57 @@ const SuccessStories = () => {
     }, []);
 
     return (
-        <section className="bg-white py-20 px-4 md:px-12 relative overflow-hidden">
+        <section className="bg-white py-8 md:py-12 px-4 md:px-6 relative overflow-hidden">
             <div className="max-w-7xl mx-auto">
 
-                {/* Header - Centered Version */}
-                <div className="flex flex-col items-center text-center mb-16 gap-4">
-                    <div>
-                        <span className="text-blue-600 text-[10px] md:text-[12px] font-black tracking-[0.4em] uppercase block mb-3">
+                {/* Header - Ultra Compact */}
+                <div className="flex flex-col items-center text-center mb-6 md:mb-8">
+                    <motion.div initial={{ opacity: 0, y: -10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
+                        <span className="text-blue-600 text-[8px] md:text-[9px] font-black tracking-[0.2em] uppercase block mb-1">
                             TESTIMONIALS
                         </span>
-                        <h2 className="text-4xl md:text-6xl font-black text-slate-900 tracking-tighter">
+                        <h2 className="text-xl md:text-2xl lg:text-3xl font-black text-slate-900 tracking-tight uppercase leading-none mb-2">
                             Global <span className="text-blue-600 italic">Impact</span>
                         </h2>
-                    </div>
-
-                    {/* Subtitle or View All link centered */}
-                    <Link to="/all-stories" className="group flex items-center gap-3 text-slate-900 font-black text-xs tracking-widest uppercase hover:text-blue-600 transition-all mt-2">
-                        View All Alumni <FaArrowRight className="group-hover:translate-x-2 transition-transform" />
-                    </Link>
+                        <Link to="/all-stories" className="group inline-flex items-center gap-1.5 text-slate-500 font-bold text-[8px] md:text-[9px] uppercase tracking-widest hover:text-blue-600 transition-all">
+                            View All Alumni <FaArrowRight size={8} className="group-hover:translate-x-1 transition-transform" />
+                        </Link>
+                    </motion.div>
                 </div>
 
-                {/* Grid: 2 Columns on Mobile, 4 on Desktop */}
-                <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-8">
+                {/* Grid: 2 Columns on small, 4 Columns from MD Screen upwards */}
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 lg:gap-5">
                     {stories.slice(0, 4).map((story) => (
                         <motion.div
                             key={story.id}
-                            whileHover={{ y: -10 }}
+                            initial={{ opacity: 0, scale: 0.95 }}
+                            whileInView={{ opacity: 1, scale: 1 }}
+                            whileHover={{ y: -4 }}
+                            viewport={{ once: true }}
                             onClick={() => setSelectedStory(story)}
-                            className="bg-slate-50 p-4 md:p-8 rounded-[2rem] md:rounded-[3rem] border border-slate-100 cursor-pointer group transition-all"
+                            className="bg-slate-50 p-3 md:p-4 rounded-xl md:rounded-2xl border border-slate-100 cursor-pointer group transition-all hover:bg-white hover:shadow-lg hover:shadow-blue-100/40"
                         >
-                            <div className="relative mb-6">
-                                <div className="w-12 h-12 md:w-20 md:h-20 rounded-2xl overflow-hidden shadow-lg ring-4 ring-white">
-                                    <img src={story.image} className="w-full h-full object-cover" alt="" />
+                            <div className="relative mb-3">
+                                <div className="w-10 h-10 md:w-12 md:h-12 rounded-lg overflow-hidden shadow-sm ring-2 ring-white">
+                                    <img src={story.image} className="w-full h-full object-cover" alt={story.name} />
                                 </div>
-                                <FaQuoteLeft className="absolute -bottom-2 -right-2 text-blue-600 text-xs md:text-lg bg-white p-1 md:p-2 rounded-lg shadow-md" />
+                                <FaQuoteLeft className="absolute -bottom-1 -right-1 text-blue-600 text-[7px] md:text-[8px] bg-white p-1 rounded shadow-sm" />
                             </div>
 
-                            <h4 className="text-[11px] md:text-xl font-black text-slate-900 mb-1 uppercase italic leading-tight">{story.name}</h4>
-                            <div className="flex items-center gap-1 text-blue-600 text-[8px] md:text-[10px] font-bold uppercase tracking-tighter mb-4">
-                                <FaGraduationCap /> {story.country}
+                            <h4 className="text-[10px] md:text-xs font-black text-slate-900 mb-0.5 uppercase italic leading-tight truncate">
+                                {story.name}
+                            </h4>
+                            
+                            <div className="flex items-center gap-1 text-blue-600 text-[7px] md:text-[8px] font-bold uppercase tracking-tighter mb-2">
+                                <FaGraduationCap size={8} /> {story.country}
                             </div>
 
-                            <p className="text-slate-500 text-[9px] md:text-sm leading-relaxed line-clamp-3 mb-6 font-medium">
+                            <p className="text-slate-500 text-[8px] md:text-[10px] leading-tight line-clamp-3 mb-3 font-medium italic">
                                 "{story.quote}"
                             </p>
 
                             <div className="flex gap-0.5">
-                                {[...Array(5)].map((_, i) => <FaStar key={i} className="text-orange-400 text-[8px] md:text-xs" />)}
+                                {[...Array(5)].map((_, i) => <FaStar key={i} className="text-orange-400 text-[6px] md:text-[7px]" />)}
                             </div>
                         </motion.div>
                     ))}
@@ -71,34 +75,37 @@ const SuccessStories = () => {
                     {selectedStory && (
                         <motion.div
                             initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
-                            className="fixed inset-0 z-[100] bg-slate-950/90 backdrop-blur-sm p-4 flex items-center justify-center"
+                            className="fixed inset-0 z-[100] bg-slate-950/80 backdrop-blur-sm p-4 flex items-center justify-center"
                             onClick={() => setSelectedStory(null)}
                         >
                             <motion.div
-                                initial={{ scale: 0.9, y: 20 }} animate={{ scale: 1, y: 0 }}
-                                className="bg-white max-w-2xl w-full rounded-[3rem] overflow-hidden relative"
+                                initial={{ scale: 0.95, opacity: 0 }} animate={{ scale: 1, opacity: 1 }}
+                                className="bg-white max-w-sm md:max-w-md w-full rounded-2xl overflow-hidden relative shadow-2xl"
                                 onClick={e => e.stopPropagation()}
                             >
-                                <button onClick={() => setSelectedStory(null)} className="absolute top-6 right-6 p-3 bg-slate-100 rounded-full hover:bg-red-50 hover:text-red-500 transition-all">
-                                    <FaTimes />
+                                <button onClick={() => setSelectedStory(null)} className="absolute top-3 right-3 p-2 bg-slate-100 rounded-full hover:bg-red-50 hover:text-red-500 transition-all z-10">
+                                    <FaTimes size={10} />
                                 </button>
-                                <div className="p-8 md:p-12">
-                                    <div className="flex items-center gap-6 mb-8">
-                                        <img src={selectedStory.image} className="w-24 h-24 rounded-[2rem] object-cover shadow-2xl" alt="" />
+                                
+                                <div className="p-5 md:p-6">
+                                    <div className="flex items-center gap-3 mb-4">
+                                        <img src={selectedStory.image} className="w-12 h-12 md:w-14 md:h-14 rounded-xl object-cover shadow-lg" alt="" />
                                         <div>
-                                            <h3 className="text-3xl font-black text-slate-900 uppercase italic">{selectedStory.name}</h3>
-                                            <p className="text-blue-600 font-black text-xs uppercase tracking-widest">{selectedStory.university}</p>
+                                            <h3 className="text-lg font-black text-slate-900 uppercase italic leading-none mb-1">{selectedStory.name}</h3>
+                                            <p className="text-blue-600 font-bold text-[8px] uppercase tracking-widest">{selectedStory.university}</p>
                                         </div>
                                     </div>
-                                    <div className="space-y-4 text-slate-600 font-medium leading-relaxed">
-                                        <p className="text-xl italic text-slate-900">"{selectedStory.quote}"</p>
-                                        <p>{selectedStory.details}</p>
+                                    
+                                    <div className="space-y-2">
+                                        <p className="text-xs md:text-sm italic text-slate-900 font-bold leading-tight">"{selectedStory.quote}"</p>
+                                        <p className="text-[10px] md:text-[12px] text-slate-600 font-medium leading-relaxed">{selectedStory.details}</p>
                                     </div>
-                                    <div className="mt-8 pt-8 border-t border-slate-100 flex justify-between items-center">
-                                        <div className="flex items-center gap-2 text-xs font-black uppercase text-slate-400">
-                                            <FaGlobe /> {selectedStory.course}
+
+                                    <div className="mt-5 pt-4 border-t border-slate-100 flex justify-between items-center">
+                                        <div className="flex items-center gap-1 text-[8px] font-black uppercase text-slate-400">
+                                            <FaGlobe size={8} /> {selectedStory.course}
                                         </div>
-                                        <div className="bg-blue-600 text-white px-4 py-2 rounded-full text-[10px] font-black uppercase">
+                                        <div className="bg-blue-600 text-white px-2 py-1 rounded text-[7px] font-black uppercase">
                                             {selectedStory.country} Visa Granted
                                         </div>
                                     </div>

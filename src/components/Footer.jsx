@@ -75,10 +75,10 @@ const Footer = () => {
                     <div>
                         <h4 className="text-white font-black text-xs uppercase tracking-[0.3em] mb-8">Quick Links</h4>
                         <ul className="space-y-4 text-sm font-semibold">
-                            <li><a href="#" className="hover:text-blue-500 transition-colors flex items-center gap-2 group"><FaArrowRight size={10} className="text-blue-500 opacity-0 group-hover:opacity-100 -ml-4 group-hover:ml-0 transition-all" /> Home</a></li>
-                            <li><a href="#" className="hover:text-blue-500 transition-colors flex items-center gap-2 group"><FaArrowRight size={10} className="text-blue-500 opacity-0 group-hover:opacity-100 -ml-4 group-hover:ml-0 transition-all" /> About Us</a></li>
-                            <li><a href="#" className="hover:text-blue-500 transition-colors flex items-center gap-2 group"><FaArrowRight size={10} className="text-blue-500 opacity-0 group-hover:opacity-100 -ml-4 group-hover:ml-0 transition-all" /> Success Stories</a></li>
-                            <li><a href="#" className="hover:text-blue-500 transition-colors flex items-center gap-2 group"><FaArrowRight size={10} className="text-blue-500 opacity-0 group-hover:opacity-100 -ml-4 group-hover:ml-0 transition-all" /> Articles</a></li>
+                            <li><a href="/" className="hover:text-blue-500 transition-colors flex items-center gap-2 group"><FaArrowRight size={10} className="text-blue-500 opacity-0 group-hover:opacity-100 -ml-4 group-hover:ml-0 transition-all" /> Home</a></li>
+                            <li><a href="/about" className="hover:text-blue-500 transition-colors flex items-center gap-2 group"><FaArrowRight size={10} className="text-blue-500 opacity-0 group-hover:opacity-100 -ml-4 group-hover:ml-0 transition-all" /> About Us</a></li>
+                            <li><a href="/all-stories" className="hover:text-blue-500 transition-colors flex items-center gap-2 group"><FaArrowRight size={10} className="text-blue-500 opacity-0 group-hover:opacity-100 -ml-4 group-hover:ml-0 transition-all" /> Success Stories</a></li>
+                            <li><a href="/all-news" className="hover:text-blue-500 transition-colors flex items-center gap-2 group"><FaArrowRight size={10} className="text-blue-500 opacity-0 group-hover:opacity-100 -ml-4 group-hover:ml-0 transition-all" /> Articles</a></li>
                         </ul>
                     </div>
 
@@ -99,7 +99,7 @@ const Footer = () => {
                                 <div className="w-10 h-10 bg-slate-800 rounded-xl flex items-center justify-center text-blue-500">
                                     <FaMapMarkerAlt />
                                 </div>
-                                <p className="font-medium">House-123, Road-5, Dhanmondi, Dhaka, Bangladesh</p>
+                                <p className="font-medium">House/1234, Dhaka, Bangladesh</p>
                             </div>
                             <div className="flex items-center gap-4 text-sm">
                                 <div className="w-10 h-10 bg-slate-800 rounded-xl flex items-center justify-center text-blue-500">

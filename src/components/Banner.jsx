@@ -30,7 +30,7 @@ const Counter = ({ value, suffix = "" }) => {
     }, [springValue]);
 
     return (
-        <span ref={ref} className="text-2xl md:text-4xl font-black text-slate-900">
+        <span ref={ref} className="text-xl md:text-2xl font-black text-slate-900 leading-none">
             {displayValue}{suffix}
         </span>
     );
@@ -38,13 +38,13 @@ const Counter = ({ value, suffix = "" }) => {
 
 const Banner = () => {
     return (
-        <section className="relative w-full py-16 md:py-24 lg:py-32 bg-[#fcfcfd] overflow-hidden">
+        <section className="relative w-full py-12 md:py-20 lg:py-24 bg-[#fcfcfd] overflow-hidden">
             {/* Background Decorative Elements */}
-            <div className="absolute top-[-10%] left-[-5%] w-[500px] h-[500px] bg-blue-50 rounded-full blur-[120px] z-0 opacity-60" />
-            <div className="absolute bottom-[-10%] right-[-5%] w-[500px] h-[500px] bg-emerald-50 rounded-full blur-[120px] z-0 opacity-60" />
+            <div className="absolute top-[-10%] left-[-5%] w-[400px] h-[400px] bg-blue-50 rounded-full blur-[100px] z-0 opacity-60" />
+            <div className="absolute bottom-[-10%] right-[-5%] w-[400px] h-[400px] bg-emerald-50 rounded-full blur-[100px] z-0 opacity-60" />
 
             <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
-                <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+                <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
 
                     {/* Left Side: Content */}
                     <motion.div
@@ -53,89 +53,95 @@ const Banner = () => {
                         viewport={{ once: true }}
                         transition={{ duration: 0.8 }}
                     >
-                        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-50 border border-blue-100 text-blue-600 font-bold text-[10px] md:text-xs uppercase tracking-widest mb-8 shadow-sm">
-                            <HiCheckBadge className="text-lg" />
+                        <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-50 border border-blue-100 text-blue-600 font-bold text-[10px] uppercase tracking-wider mb-6 shadow-sm">
+                            <HiCheckBadge className="text-base" />
                             Premier Choice for Students
                         </div>
 
-                        <h1 className="text-4xl md:text-6xl font-black text-slate-900 leading-[1.1] mb-6 tracking-tighter">
+                        {/* Heading - Made more compact */}
+                        <h1 className="text-3xl md:text-4xl lg:text-[42px] font-black text-slate-900 leading-[1.2] mb-5 tracking-tight">
                             Elevate Your <span className="text-blue-600">Future</span> <br className="hidden md:block" />
                             with Global Education
                         </h1>
 
-                        <p className="text-base md:text-xl text-slate-600 mb-10 leading-relaxed max-w-xl font-medium">
+                        {/* Description - Size adjusted */}
+                        <p className="text-sm md:text-base text-slate-600 mb-8 leading-relaxed max-w-lg font-medium">
                             <span className="font-bold text-blue-600">Study Link Ltd.</span> bridges the gap between you and your dream university with sophisticated, transparent processing.
                         </p>
 
-                        {/* White Glass Stats Row */}
-                        <div className="grid grid-cols-3 gap-3 md:gap-6 mb-12">
+                        {/* Stats Row - Compact Padding */}
+                        <div className="grid grid-cols-3 gap-3 md:gap-4 mb-10">
                             {[
-                                { label: "Success Rate", val: 95, suf: "%", color: "text-blue-600" },
-                                { label: "Partners", val: 200, suf: "+", color: "text-emerald-600" },
-                                { label: "Visa Granted", val: 2500, suf: "+", color: "text-orange-600" }
+                                { label: "Success Rate", val: 95, suf: "%" },
+                                { label: "Partners", val: 200, suf: "+" },
+                                { label: "Visa Granted", val: 2500, suf: "+" }
                             ].map((item, i) => (
-                                <div key={i} className="p-5 rounded-3xl bg-white border border-slate-100 shadow-xl shadow-slate-200/50 transition-transform hover:-translate-y-1 duration-300">
+                                <div key={i} className="p-4 rounded-2xl bg-white border border-slate-100 shadow-lg shadow-slate-200/40 transition-transform hover:-translate-y-1 duration-300 text-center lg:text-left">
                                     <Counter value={item.val} suffix={item.suf} />
-                                    <p className="text-[10px] md:text-xs text-slate-400 font-bold uppercase mt-2 tracking-wide">{item.label}</p>
+                                    <p className="text-[9px] md:text-[10px] text-slate-400 font-bold uppercase mt-1 tracking-wide">{item.label}</p>
                                 </div>
                             ))}
                         </div>
 
-                        <div className="flex flex-wrap gap-4">
-                            <Link to={'/apply'}><button className="px-10 py-4 bg-slate-900 hover:bg-blue-600 text-white rounded-2xl font-bold text-sm transition-all flex items-center justify-center gap-3 shadow-2xl shadow-slate-200 active:scale-95 group">
-                                Start Application
-                                <HiArrowUpRight className="text-xl group-hover:rotate-45 transition-transform duration-300" />
-                            </button></Link>
-                            <Link to={'/consult'}><button className="px-10 py-4 bg-white hover:bg-slate-50 text-slate-900 border border-slate-200 rounded-2xl font-bold text-sm transition-all shadow-sm active:scale-95">
-                                Book Consultation
-                            </button></Link>
+                        {/* Buttons - Adjusted padding */}
+                        <div className="flex flex-wrap gap-3">
+                            <Link to={'/apply'}>
+                                <button className="px-7 py-3.5 bg-slate-900 hover:bg-blue-600 text-white rounded-xl font-bold text-sm transition-all flex items-center justify-center gap-2 shadow-xl active:scale-95 group">
+                                    Start Application
+                                    <HiArrowUpRight className="text-lg group-hover:rotate-45 transition-transform duration-300" />
+                                </button>
+                            </Link>
+                            <Link to={'/consult'}>
+                                <button className="px-7 py-3.5 bg-white hover:bg-slate-50 text-slate-900 border border-slate-200 rounded-xl font-bold text-sm transition-all shadow-sm active:scale-95">
+                                    Book Consultation
+                                </button>
+                            </Link>
                         </div>
                     </motion.div>
 
                     {/* Right Side: Visual Section */}
                     <motion.div
-                        initial={{ opacity: 0, scale: 0.9 }}
+                        initial={{ opacity: 0, scale: 0.95 }}
                         whileInView={{ opacity: 1, scale: 1 }}
                         viewport={{ once: true }}
                         transition={{ duration: 1 }}
                         className="relative"
                     >
-                        {/* Decorative background for image */}
-                        <div className="absolute -inset-4 bg-gradient-to-tr from-blue-100 to-emerald-100 rounded-[4rem] blur-2xl opacity-40 -z-10" />
+                        <div className="absolute -inset-4 bg-gradient-to-tr from-blue-100 to-emerald-100 rounded-[3rem] blur-2xl opacity-40 -z-10" />
                         
-                        <div className="relative z-10 rounded-[3rem] md:rounded-[4.5rem] overflow-hidden border-[8px] border-white shadow-2xl">
+                        <div className="relative z-10 rounded-[2.5rem] md:rounded-[3.5rem] overflow-hidden border-[6px] border-white shadow-2xl">
                             <img
                                 src="https://images.pexels.com/photos/1438072/pexels-photo-1438072.jpeg?auto=compress&cs=tinysrgb&w=1260"
                                 alt="Faith Overseas Student"
-                                className="w-full h-[450px] md:h-[680px] object-cover transition-transform hover:scale-105 duration-700"
+                                className="w-full h-[400px] md:h-[580px] object-cover transition-transform hover:scale-105 duration-700"
                             />
 
-                            {/* Main Glass Card (White) */}
-                            <div className="absolute bottom-8 left-8 right-8 p-6 bg-white/80 backdrop-blur-xl rounded-[2.5rem] border border-white/50 shadow-2xl">
-                                <div className="flex items-center gap-5">
-                                    <div className="flex-shrink-0 w-14 h-14 bg-blue-600 rounded-2xl flex items-center justify-center text-white shadow-lg shadow-blue-200">
-                                        <HiAcademicCap size={30} />
+                            {/* Main Glass Card (Compact) */}
+                            <div className="absolute bottom-6 left-6 right-6 p-4 bg-white/80 backdrop-blur-md rounded-2xl border border-white/50 shadow-xl">
+                                <div className="flex items-center gap-4">
+                                    <div className="flex-shrink-0 w-11 h-11 bg-blue-600 rounded-xl flex items-center justify-center text-white shadow-md">
+                                        <HiAcademicCap size={24} />
                                     </div>
                                     <div>
-                                        <h4 className="font-black text-slate-900 text-base md:text-lg">Verified Institution</h4>
-                                        <p className="text-xs text-slate-500 font-bold">Certified by global education boards.</p>
+                                        <h4 className="font-bold text-slate-900 text-sm">Verified Institution</h4>
+                                        <p className="text-[10px] text-slate-500 font-semibold">Certified by global education boards.</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-                        {/* Floating Badge (White Glass) */}
+                        {/* Floating Badge (Compact) */}
                         <motion.div 
-                            animate={{ y: [0, -20, 0] }}
+                            animate={{ y: [0, -15, 0] }}
                             transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-                            className="absolute -top-6 -right-6 md:flex items-center gap-4 py-4 px-6 bg-white text-slate-900 rounded-3xl shadow-[0_20px_40px_rgba(0,0,0,0.08)] z-20 border border-slate-50 hidden"
+                            className="absolute -top-4 -right-4 md:flex items-center gap-3 py-3 px-5 bg-white text-slate-900 rounded-2xl shadow-xl z-20 border border-slate-50 hidden"
                         >
-                            <div className="w-12 h-12 bg-emerald-50 rounded-2xl flex items-center justify-center">
-                                <HiGlobeAmericas className="text-emerald-600 text-3xl animate-pulse" />
+                            <div className="w-10 h-10 bg-emerald-50 rounded-xl flex items-center justify-center">
+                                <HiGlobeAmericas className="text-emerald-600 text-2xl animate-pulse" />
                             </div>
                             <div className="flex flex-col">
-                                <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest leading-none mb-1">Status</span>
-                                <span className="text-sm font-black">Global Support</span>
+                                <span className="text-[9px] font-bold text-slate-400 uppercase tracking-widest leading-none mb-1">Status</span>
+                                <span className="text-xs font-black">Global Support</span>
                             </div>
                         </motion.div>
                     </motion.div>

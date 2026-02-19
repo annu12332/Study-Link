@@ -122,7 +122,7 @@ const Navbar = () => {
                                 </div>
                                 <div className="ml-3 hidden xl:block">
                                     <p className="text-[10px] font-bold text-slate-400 uppercase leading-none mb-1">Expert Support</p>
-                                    <p className="text-sm font-black text-slate-800">+880 1969-908432</p>
+                                    <p className="text-sm font-black text-slate-800">+880 1234567890</p>
                                 </div>
                             </div>
 
@@ -210,7 +210,7 @@ const Navbar = () => {
 
                             <div className="mt-auto pt-6 border-t border-slate-100 space-y-4">
                                 <a href="tel:+8801969908432" className="flex items-center justify-center gap-2 w-full py-4 text-slate-600 font-bold text-sm">
-                                    <HiPhone className="text-blue-600" /> +880 1969-908432
+                                    <HiPhone className="text-blue-600" /> +880 1234567890
                                 </a>
                                 <Link to="/apply">
                                     <button className="w-full bg-blue-600 text-white py-4 rounded-2xl font-bold shadow-xl shadow-blue-100 active:scale-95 transition-transform">
