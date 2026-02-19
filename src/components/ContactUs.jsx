@@ -58,14 +58,14 @@ const ContactUs = () => {
                                 <div className="mt-1 text-blue-600"><FaMapMarkerAlt size={20} /></div>
                                 <div>
                                     <h5 className="font-black text-slate-900 text-sm uppercase tracking-widest mb-1">Our Office</h5>
-                                    <p className="text-slate-500 text-sm font-medium">House #123, Road #05, Dhanmondi, Dhaka-1209, Bangladesh</p>
+                                    <p className="text-slate-500 text-sm font-medium">House1234, Dhaka, Bangladesh</p>
                                 </div>
                             </div>
                             <div className="flex items-start gap-5">
                                 <div className="mt-1 text-blue-600"><FaEnvelope size={20} /></div>
                                 <div>
                                     <h5 className="font-black text-slate-900 text-sm uppercase tracking-widest mb-1">Email Support</h5>
-                                    <p className="text-slate-500 text-sm font-medium">info@faithoverseas.com</p>
+                                    <p className="text-slate-500 text-sm font-medium">info@studylink.com</p>
                                 </div>
                             </div>
                         </div>
