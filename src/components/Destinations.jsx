@@ -66,7 +66,7 @@ const Destinations = () => {
                         <span className="inline-flex items-center gap-2 text-blue-600 text-[8px] md:text-[10px] font-black tracking-[0.4em] uppercase border border-blue-100 px-5 py-2 rounded-full bg-white shadow-sm mb-6">
                             <Sparkles size={12} /> Top Destinations
                         </span>
-                        <h2 className="text-4xl md:text-6xl font-black text-slate-900 leading-tight tracking-tighter uppercase italic">
+                        <h2 className="text-2xl md:text-6xl font-black text-slate-900 leading-tight tracking-tighter uppercase italic">
                             Global <span className="text-blue-600 not-italic">Education</span> Hubs
                         </h2>
                     </motion.div>
@@ -84,7 +84,7 @@ const Destinations = () => {
                         <motion.div key={country.slug} variants={itemVariants}>
                             <Link to={`/country/${country.slug}`}>
                                 <motion.div
-                                    whileHover="hover" // হোভার করলে চাইল্ড এলিমেন্টগুলোকেও ট্রিগার করবে
+                                    whileHover="hover" 
                                     className="group relative h-60 md:h-80 rounded-[2rem] md:rounded-[3rem] overflow-hidden bg-slate-200 shadow-lg transition-all duration-500"
                                 >
                                     {/* Image */}

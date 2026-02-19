@@ -16,15 +16,21 @@ const SuccessStories = () => {
     return (
         <section className="bg-white py-20 px-4 md:px-12 relative overflow-hidden">
             <div className="max-w-7xl mx-auto">
-                
-                {/* Header */}
-                <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
-                    <div className="text-left">
-                        <span className="text-blue-600 text-[10px] font-black tracking-[0.4em] uppercase block mb-3">TESTIMONIALS</span>
-                        <h2 className="text-4xl md:text-6xl font-black text-slate-900 tracking-tighter">Global <span className="text-blue-600 italic">Impact</span></h2>
+
+                {/* Header - Centered Version */}
+                <div className="flex flex-col items-center text-center mb-16 gap-4">
+                    <div>
+                        <span className="text-blue-600 text-[10px] md:text-[12px] font-black tracking-[0.4em] uppercase block mb-3">
+                            TESTIMONIALS
+                        </span>
+                        <h2 className="text-4xl md:text-6xl font-black text-slate-900 tracking-tighter">
+                            Global <span className="text-blue-600 italic">Impact</span>
+                        </h2>
                     </div>
-                    <Link to="/all-stories" className="group flex items-center gap-3 text-slate-900 font-black text-xs tracking-widest uppercase hover:text-blue-600 transition-all">
-                        View All Alumni <FaArrowRight className="group-hover:translate-x-2 transition-transform"/>
+
+                    {/* Subtitle or View All link centered */}
+                    <Link to="/all-stories" className="group flex items-center gap-3 text-slate-900 font-black text-xs tracking-widest uppercase hover:text-blue-600 transition-all mt-2">
+                        View All Alumni <FaArrowRight className="group-hover:translate-x-2 transition-transform" />
                     </Link>
                 </div>
 
@@ -43,12 +49,12 @@ const SuccessStories = () => {
                                 </div>
                                 <FaQuoteLeft className="absolute -bottom-2 -right-2 text-blue-600 text-xs md:text-lg bg-white p-1 md:p-2 rounded-lg shadow-md" />
                             </div>
-                            
+
                             <h4 className="text-[11px] md:text-xl font-black text-slate-900 mb-1 uppercase italic leading-tight">{story.name}</h4>
                             <div className="flex items-center gap-1 text-blue-600 text-[8px] md:text-[10px] font-bold uppercase tracking-tighter mb-4">
                                 <FaGraduationCap /> {story.country}
                             </div>
-                            
+
                             <p className="text-slate-500 text-[9px] md:text-sm leading-relaxed line-clamp-3 mb-6 font-medium">
                                 "{story.quote}"
                             </p>
@@ -63,12 +69,12 @@ const SuccessStories = () => {
                 {/* Modal Detail View */}
                 <AnimatePresence>
                     {selectedStory && (
-                        <motion.div 
+                        <motion.div
                             initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
                             className="fixed inset-0 z-[100] bg-slate-950/90 backdrop-blur-sm p-4 flex items-center justify-center"
                             onClick={() => setSelectedStory(null)}
                         >
-                            <motion.div 
+                            <motion.div
                                 initial={{ scale: 0.9, y: 20 }} animate={{ scale: 1, y: 0 }}
                                 className="bg-white max-w-2xl w-full rounded-[3rem] overflow-hidden relative"
                                 onClick={e => e.stopPropagation()}

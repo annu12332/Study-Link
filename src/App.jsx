@@ -31,6 +31,7 @@ import AllNews from './pages/AllNews';
 import NewsDetails from './pages/NewsDetails';
 import AllPhotos from './pages/AllPhotos';
 import AllStoriesPage from './pages/AllStories';
+import Consultation from './pages/Consultation';
 
 function App() {
   return (
@@ -74,6 +75,8 @@ function App() {
         <Route path="/news/:id" element={<NewsDetails />} />
         <Route path="/photos" element={<AllPhotos />} />
         <Route path="/all-stories" element={<AllStoriesPage />} />
+        <Route path="/consult" element={<Consultation />} />
+
 
 
 

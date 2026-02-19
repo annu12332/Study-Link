@@ -6,6 +6,7 @@ import {
     HiAcademicCap,
     HiGlobeAmericas
 } from 'react-icons/hi2';
+import { Link } from 'react-router-dom';
 
 const Counter = ({ value, suffix = "" }) => {
     const ref = useRef(null);
@@ -63,7 +64,7 @@ const Banner = () => {
                         </h1>
 
                         <p className="text-base md:text-xl text-slate-600 mb-10 leading-relaxed max-w-xl font-medium">
-                            <span className="font-bold text-blue-600">Faith Overseas Ltd.</span> bridges the gap between you and your dream university with sophisticated, transparent processing.
+                            <span className="font-bold text-blue-600">Study Link Ltd.</span> bridges the gap between you and your dream university with sophisticated, transparent processing.
                         </p>
 
                         {/* White Glass Stats Row */}
@@ -81,13 +82,13 @@ const Banner = () => {
                         </div>
 
                         <div className="flex flex-wrap gap-4">
-                            <button className="px-10 py-4 bg-slate-900 hover:bg-blue-600 text-white rounded-2xl font-bold text-sm transition-all flex items-center justify-center gap-3 shadow-2xl shadow-slate-200 active:scale-95 group">
+                            <Link to={'/apply'}><button className="px-10 py-4 bg-slate-900 hover:bg-blue-600 text-white rounded-2xl font-bold text-sm transition-all flex items-center justify-center gap-3 shadow-2xl shadow-slate-200 active:scale-95 group">
                                 Start Application
                                 <HiArrowUpRight className="text-xl group-hover:rotate-45 transition-transform duration-300" />
-                            </button>
-                            <button className="px-10 py-4 bg-white hover:bg-slate-50 text-slate-900 border border-slate-200 rounded-2xl font-bold text-sm transition-all shadow-sm active:scale-95">
+                            </button></Link>
+                            <Link to={'/consult'}><button className="px-10 py-4 bg-white hover:bg-slate-50 text-slate-900 border border-slate-200 rounded-2xl font-bold text-sm transition-all shadow-sm active:scale-95">
                                 Book Consultation
-                            </button>
+                            </button></Link>
                         </div>
                     </motion.div>
 
