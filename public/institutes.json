@@ -1,0 +1,165 @@
+{
+    "section_info": {
+        "badge": "Partner Institutions",
+        "title": "Global Academic Partners",
+        "subtitle": "Connecting you with world-class universities and colleges across the globe."
+    },
+    "data": [
+        {
+            "id": "1",
+            "name": "Royal Holloway University",
+            "country": "UK",
+            "location": "Egham, Surrey",
+            "image": "https://images.unsplash.com/photo-1541339907198-e087563ef3f5?q=80&w=800",
+            "description": "Royal Holloway is ranked among the top universities in the UK, offering excellence in research and teaching with a stunning historic campus.",
+            "features": [
+                "Top 30 UK University",
+                "Historic Campus",
+                "Strong Research Focus"
+            ]
+        },
+        {
+            "id": "2",
+            "name": "Capilano University",
+            "country": "Canada",
+            "location": "North Vancouver",
+            "image": "https://images.unsplash.com/photo-1523050853064-8521a3030242?q=80&w=800",
+            "description": "Capilano University is known for its supportive learning environment and practical, career-focused programs in beautiful British Columbia.",
+            "features": [
+                "Smaller Classes",
+                "Career Support",
+                "Beautiful Location"
+            ]
+        },
+        {
+            "id": "3",
+            "name": "Southern Cross University",
+            "country": "Australia",
+            "location": "Lismore, NSW",
+            "image": "https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?q=80&w=800",
+            "description": "A progressive university with high research standards and a commitment to student success across its regional campuses.",
+            "features": [
+                "5-Star Student Support",
+                "Innovative Learning",
+                "Global Network"
+            ]
+        },
+        {
+            "id": "4",
+            "name": "University of Surrey",
+            "country": "UK",
+            "location": "Guildford, England",
+            "image": "https://images.unsplash.com/photo-1592280771190-3e2e4d571952?q=80&w=800",
+            "description": "The University of Surrey is a global community of ideas and people, dedicated to life-changing education and research.",
+            "features": [
+                "University of the Year for Graduate Employment",
+                "Gold Teaching Excellence",
+                "50 mins from London"
+            ]
+        },
+        {
+            "id": "5",
+            "name": "Lakehead University",
+            "country": "Canada",
+            "location": "Thunder Bay, Ontario",
+            "image": "https://images.unsplash.com/photo-1562774053-701939374585?q=80&w=800",
+            "description": "Lakehead provides a transformative university experience that is far from ordinary, with campuses in Thunder Bay and Orillia.",
+            "features": [
+                "#1 Research University in Canada",
+                "Scholarship Opportunities",
+                "Diverse Student Body"
+            ]
+        },
+        {
+            "id": "6",
+            "name": "University of Birmingham",
+            "country": "UK",
+            "location": "Birmingham, England",
+            "image": "https://images.unsplash.com/photo-1492538368677-f6e0afe31dcc?q=80&w=800",
+            "description": "A world-leading research university, part of the prestigious Russell Group, located in the heart of the UK.",
+            "features": [
+                "Russell Group Member",
+                "Top 100 Global University",
+                "Diverse Campus Culture"
+            ]
+        },
+        {
+            "id": "7",
+            "name": "Trinity Western University",
+            "country": "Canada",
+            "location": "Langley, BC",
+            "image": "https://images.unsplash.com/photo-1525920980995-f8a382bf42c5?q=80&w=800",
+            "description": "Canada's premier Christian university, committed to developing godly Christian leaders for the various marketplaces of life.",
+            "features": [
+                "Top Ranked for Student Experience",
+                "Leadership Focus",
+                "Safe Campus"
+            ]
+        },
+        {
+            "id": "8",
+            "name": "South Sydney College",
+            "country": "Australia",
+            "location": "Sydney, NSW",
+            "image": "https://images.unsplash.com/photo-1544144433-d50aff500b91?q=80&w=800",
+            "description": "Focused on vocational training, SSC provides high-quality education and practical skills for international students.",
+            "features": [
+                "Central Sydney Location",
+                "Affordable Tuition",
+                "Flexible Timetables"
+            ]
+        },
+        {
+            "id": "9",
+            "name": "Arizona State University",
+            "country": "USA",
+            "location": "Tempe, Arizona",
+            "image": "https://images.unsplash.com/photo-1576431745103-62580795c613?q=80&w=800",
+            "description": "Ranked #1 for innovation in the US, ASU is a leading public research university focused on accessibility and impact.",
+            "features": [
+                "#1 in Innovation",
+                "Huge Alumni Network",
+                "Sun-Drenched Campus"
+            ]
+        },
+        {
+            "id": "10",
+            "name": "University of Huddersfield",
+            "country": "UK",
+            "location": "Huddersfield, West Yorkshire",
+            "image": "https://images.unsplash.com/photo-1519452575417-564c1401ecc0?q=80&w=800",
+            "description": "Huddersfield is an inspiring town and an inspiring university, known for its gold-rated teaching quality.",
+            "features": [
+                "Gold Rated Teaching",
+                "Industry Placements",
+                "Award-Winning Campus"
+            ]
+        },
+        {
+            "id": "11",
+            "name": "Fanshawe College",
+            "country": "Canada",
+            "location": "London, Ontario",
+            "image": "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=800",
+            "description": "One of Ontario's largest colleges, Fanshawe offers over 200 programs and great career outcomes for graduates.",
+            "features": [
+                "High Graduate Employment Rate",
+                "Co-op Programs",
+                "Modern Facilities"
+            ]
+        },
+        {
+            "id": "12",
+            "name": "Northeastern University",
+            "country": "USA",
+            "location": "Boston, Massachusetts",
+            "image": "https://images.unsplash.com/photo-1541829070764-84a7d30dee63?q=80&w=800",
+            "description": "A global leader in experiential learning, Northeastern integrates academics with professional work around the world.",
+            "features": [
+                "Top Co-op Program",
+                "Global Campus Network",
+                "Prestigious Research"
+            ]
+        }
+    ]
+}

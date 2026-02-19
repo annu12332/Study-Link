@@ -1,0 +1,304 @@
+{
+    "countries": [
+        {
+            "country": "China",
+            "slug": "study-in-china",
+            "image": "https://images.unsplash.com/photo-1508804185872-d7badad00f7d?auto=format&fit=crop&w=600&q=80",
+            "at_a_glance": {
+                "capital": "Beijing",
+                "currency": "CNY",
+                "language": "Mandarin",
+                "population": "1.4 Billion",
+                "gdp": "24.4T",
+                "time_zone": "UTC +8"
+            },
+            "special_highlights": "Affordable MBBS and CSC Scholarships.",
+            "is_popular": true
+        },
+        {
+            "country": "Canada",
+            "slug": "study-in-canada",
+            "image": "https://images.unsplash.com/photo-1503614472-8c93d56e92ce?auto=format&fit=crop&w=600&q=80",
+            "at_a_glance": {
+                "capital": "Ottawa",
+                "currency": "CAD",
+                "language": "English/French",
+                "population": "38M",
+                "gdp": "2.1T",
+                "time_zone": "UTC -3:30 to -8"
+            },
+            "special_highlights": "Post-Graduation Work Permit (PGWP) and PR pathways.",
+            "is_popular": true
+        },
+        {
+            "country": "United Kingdom",
+            "slug": "study-in-uk",
+            "image": "https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?auto=format&fit=crop&w=600&q=80",
+            "at_a_glance": {
+                "capital": "London",
+                "currency": "GBP",
+                "language": "English",
+                "population": "67M",
+                "gdp": "3.1T",
+                "time_zone": "UTC +0"
+            },
+            "special_highlights": "1-year Masters and 2-year Graduate Visa.",
+            "is_popular": true
+        },
+        {
+            "country": "USA",
+            "slug": "study-in-usa",
+            "image": "https://images.unsplash.com/photo-1485738422979-f5c462d49f74?auto=format&fit=crop&w=600&q=80",
+            "at_a_glance": {
+                "capital": "Washington D.C.",
+                "currency": "USD",
+                "language": "English",
+                "population": "331M",
+                "gdp": "26.9T",
+                "time_zone": "UTC -5 to -10"
+            },
+            "special_highlights": "STEM OPT extension up to 3 years.",
+            "is_popular": true
+        },
+        {
+            "country": "Australia",
+            "slug": "study-in-australia",
+            "image": "https://images.unsplash.com/photo-1523482580672-f109ba8cb9be?auto=format&fit=crop&w=600&q=80",
+            "at_a_glance": {
+                "capital": "Canberra",
+                "currency": "AUD",
+                "language": "English",
+                "population": "26M",
+                "gdp": "1.7T",
+                "time_zone": "UTC +8 to +11"
+            },
+            "special_highlights": "High minimum wage and post-study work rights.",
+            "is_popular": true
+        },
+        {
+            "country": "Germany",
+            "slug": "study-in-germany",
+            "image": "https://images.unsplash.com/photo-1467269204594-9661b134dd2b?auto=format&fit=crop&w=600&q=80",
+            "at_a_glance": {
+                "capital": "Berlin",
+                "currency": "EUR",
+                "language": "German",
+                "population": "83M",
+                "gdp": "4.4T",
+                "time_zone": "UTC +1"
+            },
+            "special_highlights": "Zero tuition fees in public universities.",
+            "is_popular": true
+        },
+        {
+            "country": "Malaysia",
+            "slug": "study-in-malaysia",
+            "image": "https://images.unsplash.com/photo-1529391409740-59b2dea08bc6?auto=format&fit=crop&w=600&q=80",
+            "at_a_glance": {
+                "capital": "Kuala Lumpur",
+                "currency": "MYR",
+                "language": "Malay/English",
+                "population": "33M",
+                "gdp": "400B",
+                "time_zone": "UTC +8"
+            },
+            "special_highlights": "Affordable global campus degrees.",
+            "is_popular": true
+        },
+        {
+            "country": "Russia",
+            "slug": "study-in-russia",
+            "image": "https://images.unsplash.com/photo-1513326738677-b964603b136d?auto=format&fit=crop&w=600&q=80",
+            "at_a_glance": {
+                "capital": "Moscow",
+                "currency": "RUB",
+                "language": "Russian",
+                "population": "144M",
+                "gdp": "2.2T",
+                "time_zone": "UTC +3"
+            },
+            "special_highlights": "Easy admission process for Engineering & MBBS.",
+            "is_popular": false
+        },
+        {
+            "country": "Japan",
+            "slug": "study-in-japan",
+            "image": "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&w=600&q=80",
+            "at_a_glance": {
+                "capital": "Tokyo",
+                "currency": "JPY",
+                "language": "Japanese",
+                "population": "125M",
+                "gdp": "4.2T",
+                "time_zone": "UTC +9"
+            },
+            "special_highlights": "High-tech research and part-time work opportunities.",
+            "is_popular": false
+        },
+        {
+            "country": "South Korea",
+            "slug": "study-in-south-korea",
+            "image": "https://images.unsplash.com/photo-1517154421773-0529f29ea451?auto=format&fit=crop&w=600&q=80",
+            "at_a_glance": {
+                "capital": "Seoul",
+                "currency": "KRW",
+                "language": "Korean",
+                "population": "51M",
+                "gdp": "1.7T",
+                "time_zone": "UTC +9"
+            },
+            "special_highlights": "GKS Scholarships and K-culture exposure.",
+            "is_popular": false
+        },
+        {
+            "country": "Turkey",
+            "slug": "study-in-turkey",
+            "image": "https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?auto=format&fit=crop&w=600&q=80",
+            "at_a_glance": {
+                "capital": "Ankara",
+                "currency": "TRY",
+                "language": "Turkish",
+                "population": "85M",
+                "gdp": "1.1T",
+                "time_zone": "UTC +3"
+            },
+            "special_highlights": "Turkiye Burslari full scholarships.",
+            "is_popular": true
+        },
+        {
+            "country": "Italy",
+            "slug": "study-in-italy",
+            "image": "https://images.unsplash.com/photo-1516483638261-f4dbaf036963?auto=format&fit=crop&w=600&q=80",
+            "at_a_glance": {
+                "capital": "Rome",
+                "currency": "EUR",
+                "language": "Italian",
+                "population": "59M",
+                "gdp": "2.2T",
+                "time_zone": "UTC +1"
+            },
+            "special_highlights": "DSU Regional scholarships for low-income students.",
+            "is_popular": true
+        },
+        {
+            "country": "France",
+            "slug": "study-in-france",
+            "image": "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=600&q=80",
+            "at_a_glance": {
+                "capital": "Paris",
+                "currency": "EUR",
+                "language": "French",
+                "population": "67M",
+                "gdp": "3.0T",
+                "time_zone": "UTC +1"
+            },
+            "special_highlights": "World-class business schools and fashion hubs.",
+            "is_popular": false
+        },
+        {
+            "country": "Sweden",
+            "slug": "study-in-sweden",
+            "image": "https://images.unsplash.com/photo-1509356861271-6e9496e95d7a?auto=format&fit=crop&w=600&q=80",
+            "at_a_glance": {
+                "capital": "Stockholm",
+                "currency": "SEK",
+                "language": "Swedish",
+                "population": "10M",
+                "gdp": "600B",
+                "time_zone": "UTC +1"
+            },
+            "special_highlights": "Innovation leader with focus on sustainability.",
+            "is_popular": false
+        },
+        {
+            "country": "Netherlands",
+            "slug": "study-in-netherlands",
+            "image": "https://images.unsplash.com/photo-1512470876302-972faa2aa9a4?auto=format&fit=crop&w=600&q=80",
+            "at_a_glance": {
+                "capital": "Amsterdam",
+                "currency": "EUR",
+                "language": "Dutch/English",
+                "population": "17M",
+                "gdp": "1.1T",
+                "time_zone": "UTC +1"
+            },
+            "special_highlights": "English-taught programs and orientation year visa.",
+            "is_popular": false
+        },
+        {
+            "country": "Hungary",
+            "slug": "study-in-hungary",
+            "image": "https://images.unsplash.com/photo-1551433027-2435ca244588?auto=format&fit=crop&w=600&q=80",
+            "at_a_glance": {
+                "capital": "Budapest",
+                "currency": "HUF",
+                "language": "Hungarian",
+                "population": "9.7M",
+                "gdp": "180B",
+                "time_zone": "UTC +1"
+            },
+            "special_highlights": "Stipendium Hungaricum fully funded scholarship.",
+            "is_popular": true
+        },
+        {
+            "country": "Finland",
+            "slug": "study-in-finland",
+            "image": "https://images.unsplash.com/photo-1528154291023-a6525fabe5b4?auto=format&fit=crop&w=600&q=80",
+            "at_a_glance": {
+                "capital": "Helsinki",
+                "currency": "EUR",
+                "language": "Finnish",
+                "population": "5.5M",
+                "gdp": "300B",
+                "time_zone": "UTC +2"
+            },
+            "special_highlights": "Happiest country with top-notch education.",
+            "is_popular": false
+        },
+        {
+            "country": "Denmark",
+            "slug": "study-in-denmark",
+            "image": "https://images.unsplash.com/photo-1513622470522-26c3c8a854bc?auto=format&fit=crop&w=600&q=80",
+            "at_a_glance": {
+                "capital": "Copenhagen",
+                "currency": "DKK",
+                "language": "Danish",
+                "population": "5.8M",
+                "gdp": "400B",
+                "time_zone": "UTC +1"
+            },
+            "special_highlights": "High quality of life and creative learning.",
+            "is_popular": false
+        },
+        {
+            "country": "Spain",
+            "slug": "study-in-spain",
+            "image": "https://images.unsplash.com/photo-1543783232-f72f0c036ee3?auto=format&fit=crop&w=600&q=80",
+            "at_a_glance": {
+                "capital": "Madrid",
+                "currency": "EUR",
+                "language": "Spanish",
+                "population": "47M",
+                "gdp": "1.5T",
+                "time_zone": "UTC +1"
+            },
+            "special_highlights": "Vibrant student life and affordable EU living.",
+            "is_popular": false
+        },
+        {
+            "country": "India",
+            "slug": "study-in-india",
+            "image": "https://images.unsplash.com/photo-1524492707947-2f85a64b67ad?auto=format&fit=crop&w=600&q=80",
+            "at_a_glance": {
+                "capital": "New Delhi",
+                "currency": "INR",
+                "language": "Hindi/English",
+                "population": "1.4 Billion",
+                "gdp": "3.7T",
+                "time_zone": "UTC +5:30"
+            },
+            "special_highlights": "Proximity to Bangladesh and ICCR Scholarships.",
+            "is_popular": true
+        }
+    ]
+}

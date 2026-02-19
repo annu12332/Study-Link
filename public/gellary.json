@@ -1,0 +1,40 @@
+{
+    "data": [
+        {
+            "id": 1,
+            "category": "Events",
+            "title": "Success Celebration 2025",
+            "image": "https://images.pexels.com/photos/267885/pexels-photo-267885.jpeg?auto=compress&cs=tinysrgb&w=800"
+        },
+        {
+            "id": 2,
+            "category": "Visa",
+            "title": "Visa Handover - UK",
+            "image": "https://images.pexels.com/photos/3184328/pexels-photo-3184328.jpeg?auto=compress&cs=tinysrgb&w=800"
+        },
+        {
+            "id": 3,
+            "category": "Office",
+            "title": "Dhaka Office Interior",
+            "image": "https://images.pexels.com/photos/3184311/pexels-photo-3184311.jpeg?auto=compress&cs=tinysrgb&w=800"
+        },
+        {
+            "id": 4,
+            "category": "Events",
+            "title": "Pre-departure Seminar",
+            "image": "https://images.pexels.com/photos/1708936/pexels-photo-1708936.jpeg?auto=compress&cs=tinysrgb&w=800"
+        },
+        {
+            "id": 5,
+            "category": "Visa",
+            "title": "Successful Students",
+            "image": "https://images.pexels.com/photos/1438072/pexels-photo-1438072.jpeg?auto=compress&cs=tinysrgb&w=800"
+        },
+        {
+            "id": 6,
+            "category": "Office",
+            "title": "Student Counseling",
+            "image": "https://images.pexels.com/photos/3184292/pexels-photo-3184292.jpeg?auto=compress&cs=tinysrgb&w=800"
+        }
+    ]
+}

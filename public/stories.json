@@ -1,0 +1,92 @@
+{
+    "stories": [
+        {
+            "id": 1,
+            "name": "Tahmidur Rahman",
+            "university": "University of Hertfordshire",
+            "country": "UK",
+            "course": "MSc in Data Science",
+            "image": "https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=800",
+            "quote": "StudyLink-এর গাইডেন্স ছাড়া আমার ভিসা প্রসেস এতটা সহজ হতো না।",
+            "rating": 5,
+            "details": "The entire process was seamless. From university selection to SOP writing, everything was handled professionally."
+        },
+        {
+            "id": 2,
+            "name": "Anika Tabassum",
+            "university": "University of Windsor",
+            "country": "Canada",
+            "course": "Bachelor of Commerce",
+            "image": "https://images.pexels.com/photos/1181690/pexels-photo-1181690.jpeg?auto=compress&cs=tinysrgb&w=800",
+            "quote": "কানাডার স্টুডেন্ট ভিসা পাওয়া আমার কাছে স্বপ্নের মতো ছিল।",
+            "rating": 5,
+            "details": "Faith Overseas team was persistent even when things got complicated with the documentation."
+        },
+        {
+            "id": 3,
+            "name": "Zubayer Ahmed",
+            "university": "Monash University",
+            "country": "Australia",
+            "course": "Master of Engineering",
+            "image": "https://images.pexels.com/photos/2182970/pexels-photo-2182970.jpeg?auto=compress&cs=tinysrgb&w=800",
+            "quote": "সঠিক ইউনিভার্সিটি চয়েস এবং স্কলারশিপ পেতে তাদের কাউন্সিলিং ছিল অসাধারণ।",
+            "rating": 5,
+            "details": "I secured a 25% scholarship thanks to their guidance on my application."
+        },
+        {
+            "id": 4,
+            "name": "Nishat Sultana",
+            "university": "Tampere University",
+            "country": "Finland",
+            "course": "Computing Sciences",
+            "image": "https://images.pexels.com/photos/712513/pexels-photo-712513.jpeg?auto=compress&cs=tinysrgb&w=800",
+            "quote": "ইউরোপে পড়াশোনার স্বপ্ন আজ সত্যি হয়েছে ফেইথ ওভারসিজের জন্য।",
+            "rating": 5,
+            "details": "Finland's visa process is tricky, but they made it look easy."
+        },
+        {
+            "id": 5,
+            "name": "Ariful Haque",
+            "university": "University of East London",
+            "country": "UK",
+            "course": "MBA",
+            "image": "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=800",
+            "quote": "খুবই দ্রুত ভিসা প্রসেস হয়েছে, আমি অত্যন্ত সন্তুষ্ট।",
+            "rating": 5,
+            "details": "Got my CAS within a week and visa in 15 days!"
+        },
+        {
+            "id": 6,
+            "name": "Maliha Khan",
+            "university": "York University",
+            "country": "Canada",
+            "course": "Psychology",
+            "image": "https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=800",
+            "quote": "তাদের ইন্টারভিউ প্রিপারেশন সেশনগুলো অনেক কার্যকর ছিল।",
+            "rating": 5,
+            "details": "The mock interviews boosted my confidence significantly."
+        },
+        {
+            "id": 7,
+            "name": "Sakib Al Hasan",
+            "university": "Deakin University",
+            "country": "Australia",
+            "course": "Cyber Security",
+            "image": "https://images.pexels.com/photos/842567/pexels-photo-842567.jpeg?auto=compress&cs=tinysrgb&w=800",
+            "quote": "স্কলারশিপ গাইডেন্সের জন্য তারা সেরা।",
+            "rating": 5,
+            "details": "Highly recommend for anyone aiming for top Australian universities."
+        },
+        {
+            "id": 8,
+            "name": "Tanvir Ishraq",
+            "university": "Berlin School of Tech",
+            "country": "Germany",
+            "course": "Data Analytics",
+            "image": "https://images.pexels.com/photos/91227/pexels-photo-91227.jpeg?auto=compress&cs=tinysrgb&w=800",
+            "quote": "জার্মান ভিসার জটিলতা তারা খুব সুন্দরভাবে সামলেছে।",
+            "rating": 5,
+            "details": "The block account setup and visa file were perfect."
+        }
+    ]
+}

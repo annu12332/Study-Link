@@ -1,0 +1,66 @@
+{
+    "section_info": {
+        "title": "Our Services",
+        "subtitle": "Global Education Solutions",
+        "badge": "What We Offer"
+    },
+    "data": [
+        {
+            "id": 1,
+            "title": "Career Counseling",
+            "icon": "Users",
+            "description": "Expert advice for your future academic and career path.",
+            "is_active": true
+        },
+        {
+            "id": 2,
+            "title": "University Selection",
+            "icon": "School",
+            "description": "Find the best fit universities from thousands of options.",
+            "is_active": true
+        },
+        {
+            "id": 3,
+            "title": "Admission",
+            "icon": "GraduationCap",
+            "description": "Complete support for university application and admission.",
+            "is_active": true
+        },
+        {
+            "id": 4,
+            "title": "Accommodation",
+            "icon": "Home",
+            "description": "Safe and convenient housing options near your university.",
+            "is_active": true
+        },
+        {
+            "id": 5,
+            "title": "Visa Application",
+            "icon": "FileText",
+            "description": "Hassle-free visa documentation and interview prep.",
+            "is_active": true
+        },
+        {
+            "id": 6,
+            "title": "Air Ticket",
+            "icon": "Plane",
+            "description": "Get affordable flight tickets with student discounts.",
+            "is_active": true,
+            "is_highlighted": true
+        },
+        {
+            "id": 7,
+            "title": "Airport Pickup",
+            "icon": "Car",
+            "description": "Personalized pickup service upon arrival in your new country.",
+            "is_active": true
+        },
+        {
+            "id": 8,
+            "title": "Language Course",
+            "icon": "Languages",
+            "description": "IELTS, Duolingo, and other language test preparations.",
+            "is_active": true
+        }
+    ]
+}

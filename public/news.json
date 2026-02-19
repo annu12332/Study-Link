@@ -1,0 +1,44 @@
+{
+    "data": [
+        {
+            "id": "1",
+            "title": "New Student Visa Rules for UK in 2026: What You Need to Know",
+            "category": "Visa Updates",
+            "date": "Feb 15, 2026",
+            "readTime": "5 min read",
+            "image": "https://images.pexels.com/photos/4144923/pexels-photo-4144923.jpeg?auto=compress&cs=tinysrgb&w=1260",
+            "excerpt": "The UK government has recently announced several changes to the International Student Route. Here's a breakdown of the new policy regarding work permits and dependents.",
+            "content": "Full detailed article content goes here. The UK government is introducing a more streamlined application process while maintaining strict academic requirements..."
+        },
+        {
+            "id": "2",
+            "title": "Top 5 Fully Funded Scholarships in Canada for International Students",
+            "category": "Scholarships",
+            "date": "Feb 10, 2026",
+            "readTime": "8 min read",
+            "image": "https://images.pexels.com/photos/267885/pexels-photo-267885.jpeg?auto=compress&cs=tinysrgb&w=1260",
+            "excerpt": "Dreaming of studying in Canada for free? Explore these prestigious scholarships that cover tuition, living costs, and travel.",
+            "content": "Canada remains a top destination for students. Prestigious awards like the Vanier Canada Graduate Scholarships are now open for 2026 intake..."
+        },
+        {
+            "id": "3",
+            "title": "Living Costs in Australia: A Complete Guide for Students",
+            "category": "Study Guide",
+            "date": "Jan 28, 2026",
+            "readTime": "6 min read",
+            "image": "https://images.pexels.com/photos/4553618/pexels-photo-4553618.jpeg?auto=compress&cs=tinysrgb&w=1260",
+            "excerpt": "Planning your budget is crucial. Learn about accommodation, food, and transport costs across major Australian cities.",
+            "content": "From Sydney to Melbourne, living costs can vary significantly. This guide breaks down the average weekly expenses for an international student..."
+        },
+        {
+            "id": "4",
+            "title": "IELTS vs PTE: Which English Test is Better for Your Future?",
+            "category": "Study Guide",
+            "date": "Jan 15, 2026",
+            "readTime": "7 min read",
+            "image": "https://images.pexels.com/photos/3769118/pexels-photo-3769118.jpeg?auto=compress&cs=tinysrgb&w=800",
+            "excerpt": "Choosing the right English proficiency test can be confusing. We compare the format, scoring, and acceptance of IELTS and PTE.",
+            "content": "Both tests are widely accepted. However, PTE's computer-based marking might suit those who prefer a more structured environment..."
+        }
+    ]
+}

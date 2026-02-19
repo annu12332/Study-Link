@@ -1,0 +1,69 @@
+{
+    "section_info": {
+        "badge": "Don't Miss Out",
+        "title": "Upcoming Events & Seminars",
+        "subtitle": "Join our interactive sessions with university delegates and experts to clear all your doubts about studying abroad."
+    },
+    "data": [
+        {
+            "id": "1",
+            "title": "UK Education Expo 2026",
+            "type": "Offline",
+            "date": "15 March, 2026",
+            "time": "10:00 AM - 04:00 PM",
+            "location": "Pan Pacific Sonargaon, Dhaka",
+            "image": "https://images.pexels.com/photos/2608517/pexels-photo-2608517.jpeg?auto=compress&cs=tinysrgb&w=800",
+            "category": "Expo",
+            "status": "Upcoming",
+            "description": "Meet representatives from 50+ UK universities directly. Get on-spot assessment, clarify entry requirements, and secure exclusive scholarship guidance for the upcoming intake."
+        },
+        {
+            "id": "2",
+            "title": "Scholarship Webinar: Study in Canada",
+            "type": "Online",
+            "date": "22 March, 2026",
+            "time": "08:00 PM - 09:30 PM",
+            "location": "Zoom Meetings",
+            "image": "https://images.pexels.com/photos/3184328/pexels-photo-3184328.jpeg?auto=compress&cs=tinysrgb&w=800",
+            "category": "Webinar",
+            "status": "Upcoming",
+            "description": "An intensive session covering fully-funded scholarship opportunities in Canada. Learn about the GIC process, study permit requirements, and post-graduation work permits (PGWP)."
+        },
+        {
+            "id": "3",
+            "title": "Australia University Open Day",
+            "type": "Offline",
+            "date": "05 April, 2026",
+            "time": "11:00 AM - 05:00 PM",
+            "location": "Radisson Blu, Chittagong",
+            "image": "https://images.pexels.com/photos/1708936/pexels-photo-1708936.jpeg?auto=compress&cs=tinysrgb&w=800",
+            "category": "Open Day",
+            "status": "New",
+            "description": "Experience the Australian education system. Interacting with alumni and university delegates from top Group of Eight universities. Bring your academic documents for evaluation."
+        },
+        {
+            "id": "4",
+            "title": "USA High-Ranked University Seminar",
+            "type": "Offline",
+            "date": "12 April, 2026",
+            "time": "02:00 PM - 06:00 PM",
+            "location": "Westin, Gulshan, Dhaka",
+            "image": "https://images.pexels.com/photos/267885/pexels-photo-267885.jpeg?auto=compress&cs=tinysrgb&w=800",
+            "category": "Seminar",
+            "status": "Upcoming",
+            "description": "Special focus on Ivy League and high-ranked US universities. Detailed discussion on SAT/GRE requirements, Statement of Purpose (SOP) writing, and F1 Visa interview preparation."
+        },
+        {
+            "id": "5",
+            "title": "IELTS & PTE Success Workshop",
+            "type": "Online",
+            "date": "18 April, 2026",
+            "time": "07:30 PM - 09:00 PM",
+            "location": "Google Meet",
+            "image": "https://images.pexels.com/photos/3769118/pexels-photo-3769118.jpeg?auto=compress&cs=tinysrgb&w=800",
+            "category": "Workshop",
+            "status": "New",
+            "description": "Struggling with English proficiency tests? Join our certified trainers for a masterclass on cracking IELTS/PTE in the first attempt with 7.5+ band score tips."
+        }
+    ]
+}
