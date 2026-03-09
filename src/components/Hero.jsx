@@ -44,63 +44,67 @@ const Hero = () => {
     }, [nextSlide]);
 
     return (
-        <section className="relative w-full h-[70vh] md:h-[80vh] bg-[#fdfeff] overflow-hidden">
-            {/* Background with Zoom Effect */}
+        <section className="relative w-full h-[80vh] md:h-[85vh] bg-[#F8FAFC] overflow-hidden">
+            {/* Background Layer */}
             <AnimatePresence mode="wait">
                 <motion.div
                     key={current}
-                    initial={{ scale: 1.05, opacity: 0 }}
+                    initial={{ scale: 1.1, opacity: 0 }}
                     animate={{ scale: 1, opacity: 1 }}
                     exit={{ opacity: 0 }}
-                    transition={{ duration: 1, ease: "easeOut" }}
+                    transition={{ duration: 1.2, ease: "easeOut" }}
                     className="absolute inset-0"
                 >
-                    <img
-                        src={slides[current].image}
-                        alt="Background"
-                        className="w-full h-full object-cover"
-                    />
-                    {/* Compact Overlay - increased white density for better text contrast */}
-                    <div className="absolute inset-0 bg-gradient-to-b from-white/95 via-white/60 to-transparent md:bg-gradient-to-r md:from-white/95 md:via-white/70 md:to-transparent" />
+                    <img src={slides[current].image} alt="Study Abroad" className="w-full h-full object-cover" />
+                    <div className="absolute inset-0 bg-gradient-to-b from-white/95 via-white/70 to-transparent md:bg-gradient-to-r md:from-white/95 md:via-white/80 md:to-transparent" />
                 </motion.div>
             </AnimatePresence>
 
             {/* Content Container */}
             <div className="relative h-full max-w-7xl mx-auto px-6 lg:px-12 flex items-center">
-                <div className="w-full max-w-lg lg:max-w-md"> {/* Restricted width for compactness */}
+                <div className="w-full max-w-xl">
                     <AnimatePresence mode="wait">
                         <motion.div
                             key={current}
-                            initial={{ opacity: 0, x: -10 }}
+                            initial={{ opacity: 0, x: -20 }}
                             animate={{ opacity: 1, x: 0 }}
-                            exit={{ opacity: 0, x: 10 }}
-                            transition={{ duration: 0.4 }}
+                            exit={{ opacity: 0, x: 20 }}
+                            transition={{ duration: 0.5 }}
                         >
-                            {/* Tag - Smaller & Tighter */}
-                            <div className="inline-flex items-center px-2 py-0.5 rounded bg-blue-600/10 border border-blue-600/10 text-blue-600 font-extrabold text-[9px] uppercase tracking-tighter mb-3">
+                            {/* Compact Tag */}
+                            <div className="inline-flex items-center px-2.5 py-1 rounded bg-blue-600/10 border border-blue-600/10 text-[#0055FF] font-bold text-[10px] uppercase tracking-widest mb-4">
                                 {slides[current].tag}
                             </div>
 
-                            {/* Heading - Significantly smaller on large screens */}
-                            <h1 className="text-2xl md:text-4xl lg:text-[40px] font-black text-slate-900 leading-[1.1] mb-3 tracking-tight uppercase italic">
+                            {/* Headline */}
+                            <h1 className="text-3xl md:text-5xl lg:text-[54px] font-black text-slate-900 leading-[1.1] mb-4 tracking-tight uppercase italic">
                                 {slides[current].title.split(' ').map((word, i) => (
-                                    <span key={i} className={["Future", "Abroad", "Visa", "Success"].includes(word) ? "text-blue-600" : ""}>
+                                    <span key={i} className={["Future", "Abroad", "Visa", "Success"].includes(word) ? "text-[#0055FF]" : ""}>
                                         {word}{' '}
                                     </span>
                                 ))}
                             </h1>
 
-                            {/* Description - Compact font and narrow max-width */}
-                            <p className="text-[11px] md:text-sm text-slate-500 mb-5 leading-snug max-w-[320px] font-medium">
+                            {/* Short Description */}
+                            <p className="text-xs md:text-sm text-slate-500 mb-8 leading-relaxed max-w-[380px] font-medium">
                                 {slides[current].description}
                             </p>
 
-                            {/* Button - Scaled down */}
-                            <div className="flex items-center">
+                            {/* Compact Vertical Buttons */}
+                            <div className="flex flex-col gap-3 w-fit">
+                                {/* 1. Analyze My Eligibility (Navy Blue) */}
+                                <Link to="/eligibility">
+                                    <button className="flex items-center gap-3 px-5 py-3 bg-[#111827] hover:bg-slate-800 text-white rounded-lg font-bold text-xs md:text-sm transition-all shadow-lg active:scale-95 group">
+                                        Analyze My Eligibility
+                                        <HiArrowRight className="transition-transform group-hover:translate-x-1" />
+                                    </button>
+                                </Link>
+
+                                {/* 2. Start Application (Vibrant Blue) */}
                                 <Link to="/apply">
-                                    <button className="px-5 py-2.5 bg-slate-900 hover:bg-blue-600 text-white rounded-lg font-bold text-[10px] uppercase tracking-widest transition-all flex items-center gap-2 shadow-md active:scale-95">
+                                    <button className="flex items-center gap-3 px-5 py-2.5 bg-[#0055FF] hover:bg-blue-700 text-white rounded-lg font-bold text-[11px] uppercase tracking-widest transition-all shadow-md active:scale-95">
                                         Start Application
-                                        <HiArrowRight />
+                                        <HiArrowRight size={12} />
                                     </button>
                                 </Link>
                             </div>
@@ -109,36 +113,27 @@ const Hero = () => {
                 </div>
             </div>
 
-            {/* Navigation Controls - Shifted upwards slightly for a more 'integrated' feel */}
+            {/* Slider Controls */}
             <div className="absolute bottom-10 left-0 right-0">
                 <div className="max-w-7xl mx-auto px-6 lg:px-12 flex items-center justify-between">
-
-                    {/* Dots - Minimalist */}
-                    <div className="flex items-center gap-1">
+                    {/* Progress Dots */}
+                    <div className="flex items-center gap-1.5">
                         {slides.map((_, i) => (
                             <button
                                 key={i}
                                 onClick={() => setCurrent(i)}
-                                className="relative py-1 outline-none group"
-                            >
-                                <div className={`transition-all duration-300 rounded-full h-1 ${current === i ? 'w-5 bg-blue-600' : 'w-1.5 bg-slate-300'}`} />
-                            </button>
+                                className={`h-1 transition-all duration-300 rounded-full ${current === i ? 'w-6 bg-[#0055FF]' : 'w-2 bg-slate-300'}`}
+                            />
                         ))}
                     </div>
 
-                    {/* Nav Arrows - Ultra Compact */}
-                    <div className="flex gap-1">
-                        <button
-                            onClick={prevSlide}
-                            className="w-7 h-7 rounded bg-white/60 backdrop-blur-sm border border-slate-200 flex items-center justify-center text-slate-600 hover:bg-white transition-all active:scale-90"
-                        >
-                            <HiChevronLeft size={14} />
+                    {/* Navigation Arrows */}
+                    <div className="flex gap-2">
+                        <button onClick={prevSlide} className="w-9 h-9 rounded-lg bg-white/80 backdrop-blur-sm border border-slate-200 flex items-center justify-center text-slate-600 hover:bg-white transition-all active:scale-90 shadow-sm">
+                            <HiChevronLeft size={18} />
                         </button>
-                        <button
-                            onClick={nextSlide}
-                            className="w-7 h-7 rounded bg-slate-900 flex items-center justify-center text-white hover:bg-blue-600 transition-all active:scale-90"
-                        >
-                            <HiChevronRight size={14} />
+                        <button onClick={nextSlide} className="w-9 h-9 rounded-lg bg-[#111827] flex items-center justify-center text-white hover:bg-[#0055FF] transition-all active:scale-90 shadow-md">
+                            <HiChevronRight size={18} />
                         </button>
                     </div>
                 </div>

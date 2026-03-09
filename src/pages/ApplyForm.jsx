@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import axios from 'axios'; // Axios import korun
 import { 
     FaUser, FaEnvelope, FaPhone, FaMapMarkerAlt, 
     FaGlobe, FaBookOpen, FaPaperPlane, FaCheckCircle, 
@@ -9,13 +10,39 @@ import {
 const ApplyForm = () => {
     const [step, setStep] = useState(1);
     const [isSubmitted, setIsSubmitted] = useState(false);
+    const [loading, setLoading] = useState(false);
+
+    // Form State
+    const [formData, setFormData] = useState({
+        name: '',
+        email: '',
+        phone: '',
+        country: '',
+        subject: '',
+        address: '',
+        message: ''
+    });
+
+    const handleChange = (e) => {
+        setFormData({ ...formData, [e.target.name]: e.target.value });
+    };
 
     const nextStep = () => setStep(step + 1);
     const prevStep = () => setStep(step - 1);
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        setTimeout(() => setIsSubmitted(true), 1500);
+        setLoading(true);
+        try {
+            // Backend API endpoint - applications/apply
+            await axios.post('http://localhost:5000/api/applications/apply', formData);
+            setIsSubmitted(true);
+        } catch (err) {
+            console.error("Submission error:", err);
+            alert("Application submit hote somossya hoyeche. Abar chesta korun.");
+        } finally {
+            setLoading(false);
+        }
     };
 
     const inputStyle = "w-full bg-slate-50 border-2 border-transparent focus:border-blue-500 focus:bg-white rounded-2xl px-6 py-4 text-sm font-semibold transition-all outline-none shadow-sm";
@@ -42,7 +69,7 @@ const ApplyForm = () => {
                                 animate={{ opacity: 1, y: 0 }}
                                 exit={{ opacity: 0, y: -10 }}
                                 className="p-8 md:p-12"
-                                onSubmit={step === 2 ? handleSubmit : (e) => e.preventDefault()}
+                                onSubmit={handleSubmit}
                             >
                                 
                                 {/* Step 1: Basic Info */}
@@ -53,14 +80,14 @@ const ApplyForm = () => {
                                                 <label className={labelStyle}>Your Name *</label>
                                                 <div className="relative">
                                                     <FaUser className="absolute left-6 top-1/2 -translate-y-1/2 text-slate-300" />
-                                                    <input type="text" placeholder="Full Name" className={`${inputStyle} pl-14`} required />
+                                                    <input name="name" value={formData.name} onChange={handleChange} type="text" placeholder="Full Name" className={`${inputStyle} pl-14`} required />
                                                 </div>
                                             </div>
                                             <div>
                                                 <label className={labelStyle}>Email Address *</label>
                                                 <div className="relative">
                                                     <FaEnvelope className="absolute left-6 top-1/2 -translate-y-1/2 text-slate-300" />
-                                                    <input type="email" placeholder="Email Address" className={`${inputStyle} pl-14`} required />
+                                                    <input name="email" value={formData.email} onChange={handleChange} type="email" placeholder="Email Address" className={`${inputStyle} pl-14`} required />
                                                 </div>
                                             </div>
                                         </div>
@@ -70,19 +97,19 @@ const ApplyForm = () => {
                                                 <label className={labelStyle}>Phone Number *</label>
                                                 <div className="relative">
                                                     <FaPhone className="absolute left-6 top-1/2 -translate-y-1/2 text-slate-300" />
-                                                    <input type="tel" placeholder="Phone Number" className={`${inputStyle} pl-14`} required />
+                                                    <input name="phone" value={formData.phone} onChange={handleChange} type="tel" placeholder="Phone Number" className={`${inputStyle} pl-14`} required />
                                                 </div>
                                             </div>
                                             <div>
                                                 <label className={labelStyle}>Desired Country *</label>
                                                 <div className="relative">
                                                     <FaGlobe className="absolute left-6 top-1/2 -translate-y-1/2 text-slate-300" />
-                                                    <input type="text" placeholder="e.g. UK, Canada" className={`${inputStyle} pl-14`} required />
+                                                    <input name="country" value={formData.country} onChange={handleChange} type="text" placeholder="e.g. UK, Canada" className={`${inputStyle} pl-14`} required />
                                                 </div>
                                             </div>
                                         </div>
 
-                                        <button onClick={nextStep} className="w-full bg-blue-600 text-white py-5 rounded-2xl font-black text-xs tracking-widest flex items-center justify-center gap-3 hover:bg-slate-900 transition-all shadow-lg shadow-blue-200">
+                                        <button type="button" onClick={nextStep} className="w-full bg-blue-600 text-white py-5 rounded-2xl font-black text-xs tracking-widest flex items-center justify-center gap-3 hover:bg-slate-900 transition-all shadow-lg shadow-blue-200">
                                             NEXT STEP <FaArrowRight />
                                         </button>
                                     </div>
@@ -96,29 +123,29 @@ const ApplyForm = () => {
                                                 <label className={labelStyle}>Desired Subject *</label>
                                                 <div className="relative">
                                                     <FaBookOpen className="absolute left-6 top-1/2 -translate-y-1/2 text-slate-300" />
-                                                    <input type="text" placeholder="Desired Subject" className={`${inputStyle} pl-14`} required />
+                                                    <input name="subject" value={formData.subject} onChange={handleChange} type="text" placeholder="Desired Subject" className={`${inputStyle} pl-14`} required />
                                                 </div>
                                             </div>
                                             <div>
                                                 <label className={labelStyle}>Address *</label>
                                                 <div className="relative">
                                                     <FaMapMarkerAlt className="absolute left-6 top-1/2 -translate-y-1/2 text-slate-300" />
-                                                    <input type="text" placeholder="Your Address" className={`${inputStyle} pl-14`} required />
+                                                    <input name="address" value={formData.address} onChange={handleChange} type="text" placeholder="Your Address" className={`${inputStyle} pl-14`} required />
                                                 </div>
                                             </div>
                                         </div>
 
                                         <div>
                                             <label className={labelStyle}>Your Message</label>
-                                            <textarea rows="4" placeholder="Write your message here..." className={`${inputStyle} resize-none`}></textarea>
+                                            <textarea name="message" value={formData.message} onChange={handleChange} rows="4" placeholder="Write your message here..." className={`${inputStyle} resize-none`}></textarea>
                                         </div>
 
                                         <div className="flex gap-4">
-                                            <button onClick={prevStep} className="w-1/3 bg-slate-100 text-slate-600 py-5 rounded-2xl font-black text-xs tracking-widest flex items-center justify-center gap-2 hover:bg-slate-200 transition-all">
+                                            <button type="button" onClick={prevStep} className="w-1/3 bg-slate-100 text-slate-600 py-5 rounded-2xl font-black text-xs tracking-widest flex items-center justify-center gap-2 hover:bg-slate-200 transition-all">
                                                 <FaArrowLeft /> BACK
                                             </button>
-                                            <button type="submit" className="w-2/3 bg-red-600 text-white py-5 rounded-2xl font-black text-xs tracking-widest flex items-center justify-center gap-3 hover:bg-red-700 transition-all shadow-lg shadow-red-100">
-                                                SUBMIT APPLICATION <FaPaperPlane size={14} />
+                                            <button type="submit" disabled={loading} className={`w-2/3 ${loading ? 'bg-slate-400' : 'bg-red-600 hover:bg-red-700'} text-white py-5 rounded-2xl font-black text-xs tracking-widest flex items-center justify-center gap-3 transition-all shadow-lg shadow-red-100`}>
+                                                {loading ? 'SUBMITTING...' : 'SUBMIT APPLICATION'} <FaPaperPlane size={14} />
                                             </button>
                                         </div>
                                     </div>
@@ -137,7 +164,11 @@ const ApplyForm = () => {
                                 <h3 className="text-2xl font-black text-slate-900 mb-2">Application Submitted!</h3>
                                 <p className="text-slate-500 font-medium text-sm mb-8">আমাদের প্রতিনিধি খুব শীঘ্রই আপনার সাথে যোগাযোগ করবেন।</p>
                                 <button 
-                                    onClick={() => {setIsSubmitted(false); setStep(1);}}
+                                    onClick={() => {
+                                        setIsSubmitted(false); 
+                                        setStep(1);
+                                        setFormData({ name: '', email: '', phone: '', country: '', subject: '', address: '', message: '' });
+                                    }}
                                     className="px-8 py-3 bg-slate-900 text-white rounded-xl text-xs font-black tracking-widest uppercase"
                                 >
                                     Apply Again

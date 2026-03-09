@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, MapPin, Loader2, Sparkles } from 'lucide-react';
+import { ArrowUpRight, MapPin, Loader2, Sparkles, MoveRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const Destinations = () => {
@@ -11,10 +11,10 @@ const Destinations = () => {
         const fetchCountries = async () => {
             try {
                 const response = await fetch('/country.json');
-                if (!response.ok) throw new Error('Failed to fetch country data');
+                if (!response.ok) throw new Error('Failed to fetch data');
                 const data = await response.json();
-                const popularCountries = data.countries.filter(c => c.is_popular).slice(0, 8);
-                setCountries(popularCountries);
+                // Strictly 4 items
+                setCountries(data.countries.filter(c => c.is_popular).slice(0, 4));
             } catch (err) {
                 console.error(err);
             } finally {
@@ -24,131 +24,102 @@ const Destinations = () => {
         fetchCountries();
     }, []);
 
-    // Container variants
-    const containerVariants = {
-        hidden: { opacity: 0 },
-        visible: { 
-            opacity: 1, 
-            transition: { staggerChildren: 0.1, delayChildren: 0.2 } 
-        }
-    };
-
-    // Card variants
-    const itemVariants = {
-        hidden: { y: 20, opacity: 0 },
-        visible: { 
-            y: 0, 
-            opacity: 1, 
-            transition: { type: "spring", stiffness: 100 } 
-        }
-    };
-
     if (loading) return (
-        <div className="h-96 bg-white flex items-center justify-center">
+        <div className="h-96 flex items-center justify-center bg-white">
             <Loader2 className="text-blue-600 animate-spin w-10 h-10" />
         </div>
     );
 
     return (
-        <section className="relative bg-[#f8fafc] py-16 md:py-24 px-4 sm:px-12 lg:px-24 overflow-hidden">
-            {/* Background Blob */}
-            <div className="absolute top-0 right-0 w-[300px] md:w-[600px] h-[300px] md:h-[600px] bg-blue-100/40 rounded-full blur-[80px] -z-10" />
-            
-            <div className="max-w-7xl mx-auto relative z-10">
+        <section className="bg-white py-16 md:py-24 px-4 sm:px-10 lg:px-20">
+            <div className="max-w-7xl mx-auto">
                 
-                {/* Header */}
-                <div className="text-center mb-12 md:mb-20">
+                {/* Centered Header */}
+                <div className="text-center mb-12 md:mb-16 space-y-4">
                     <motion.div
+                        initial={{ opacity: 0, y: 10 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-50 border border-blue-100 text-blue-600 text-[10px] font-bold uppercase tracking-[0.2em]"
+                    >
+                        <Sparkles size={14} /> Expert's Top Choice
+                    </motion.div>
+                    <motion.h2 
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
+                        className="text-4xl md:text-6xl font-black text-slate-900 tracking-tighter leading-none uppercase"
                     >
-                        <span className="inline-flex items-center gap-2 text-blue-600 text-[8px] md:text-[10px] font-black tracking-[0.4em] uppercase border border-blue-100 px-5 py-2 rounded-full bg-white shadow-sm mb-6">
-                            <Sparkles size={12} /> Top Destinations
-                        </span>
-                        <h2 className="text-2xl md:text-6xl font-black text-slate-900 leading-tight tracking-tighter uppercase italic">
-                            Global <span className="text-blue-600 not-italic">Education</span> Hubs
-                        </h2>
-                    </motion.div>
+                        Global <span className="text-blue-600 italic">Hubs</span>
+                    </motion.h2>
+                    <p className="text-slate-500 text-xs md:text-sm font-medium uppercase tracking-widest max-w-md mx-auto">
+                        Explore the most preferred destinations for international studies
+                    </p>
                 </div>
 
-                {/* Grid */}
-                <motion.div 
-                    variants={containerVariants}
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true }}
-                    className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-8"
-                >
-                    {countries.map((country) => (
-                        <motion.div key={country.slug} variants={itemVariants}>
-                            <Link to={`/country/${country.slug}`}>
-                                <motion.div
-                                    whileHover="hover" 
-                                    className="group relative h-60 md:h-80 rounded-[2rem] md:rounded-[3rem] overflow-hidden bg-slate-200 shadow-lg transition-all duration-500"
-                                >
-                                    {/* Image */}
-                                    <motion.img
-                                        src={country.image}
-                                        alt={country.country}
-                                        className="absolute inset-0 w-full h-full object-cover"
-                                        variants={{
-                                            hover: { scale: 1.1 }
-                                        }}
-                                        transition={{ duration: 0.6 }}
-                                    />
-                                    
-                                    {/* Overlay */}
-                                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-900/40 to-transparent opacity-80" />
+                {/* Grid System: 2 Columns on Small Screens, 4 on Large */}
+                <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-6">
+                    {countries.map((country, idx) => (
+                        <motion.div
+                            key={country.slug}
+                            initial={{ opacity: 0, scale: 0.95 }}
+                            whileInView={{ opacity: 1, scale: 1 }}
+                            transition={{ delay: idx * 0.1 }}
+                            viewport={{ once: true }}
+                        >
+                            <Link to={`/country/${country.slug}`} className="group relative block h-[260px] md:h-[400px] overflow-hidden rounded-2xl md:rounded-[2rem] bg-slate-100 shadow-sm transition-all duration-500 hover:shadow-xl">
+                                
+                                {/* Image */}
+                                <img
+                                    src={country.image}
+                                    alt={country.country}
+                                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                                />
+                                <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent opacity-90 transition-opacity group-hover:opacity-100" />
 
-                                    {/* Content */}
-                                    <div className="absolute inset-0 p-5 md:p-8 flex flex-col justify-end">
-                                        <motion.p 
-                                            variants={{
-                                                hidden: { opacity: 0, y: 10 },
-                                                hover: { opacity: 1, y: 0 }
-                                            }}
-                                            className="text-[8px] md:text-[10px] font-bold text-blue-400 uppercase tracking-widest mb-1"
-                                        >
-                                            Start Journey
-                                        </motion.p>
-                                        <h3 className="text-lg md:text-2xl font-black text-white tracking-tight uppercase italic">
+                                {/* Content */}
+                                <div className="absolute inset-0 p-4 md:p-8 flex flex-col justify-end">
+                                    <div className="space-y-1 md:space-y-2 translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
+                                        <div className="flex items-center gap-1 text-blue-400 font-bold text-[8px] md:text-[10px] uppercase tracking-widest">
+                                            <MapPin size={12} className="hidden md:block" /> {country.continent || 'Global'}
+                                        </div>
+                                        <h3 className="text-lg md:text-3xl font-black text-white uppercase tracking-tighter leading-none">
                                             {country.country}
                                         </h3>
-                                        {/* Underline */}
-                                        <motion.div 
-                                            className="h-1 bg-blue-500 mt-2 rounded-full"
-                                            variants={{
-                                                hidden: { width: 0 },
-                                                hover: { width: "100%" }
-                                            }}
-                                            transition={{ duration: 0.4 }}
-                                        />
+                                        
+                                        {/* Minimal Hover Line */}
+                                        <div className="w-0 group-hover:w-full h-0.5 bg-blue-500 transition-all duration-500 rounded-full" />
                                     </div>
-
-                                    {/* Pin Icon */}
-                                    <div className="absolute top-4 right-4 w-8 h-8 md:w-10 md:h-10 bg-white/10 backdrop-blur-md rounded-2xl flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-all">
-                                        <MapPin size={18} />
+                                    
+                                    {/* Action Icon for Desktop */}
+                                    <div className="absolute top-4 right-4 h-8 w-8 md:h-12 md:w-12 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white scale-0 group-hover:scale-100 transition-transform duration-300">
+                                        <ArrowUpRight size={20} />
                                     </div>
-                                </motion.div>
+                                </div>
                             </Link>
                         </motion.div>
                     ))}
-                </motion.div>
+                </div>
 
-                {/* Footer Button */}
-                <div className="mt-16 text-center">
+                {/* Bottom Centered Action Button */}
+                <motion.div 
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    className="mt-12 md:mt-20 text-center"
+                >
                     <Link to="/countries">
                         <motion.button 
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
-                            className="inline-flex items-center gap-3 bg-slate-900 text-white px-8 py-4 rounded-2xl font-black text-[10px] md:text-xs uppercase tracking-[0.2em]"
+                            className="inline-flex items-center gap-3 bg-slate-900 text-white px-8 py-4 rounded-2xl font-black text-[10px] md:text-xs uppercase tracking-[0.2em] shadow-lg hover:bg-blue-600 transition-colors duration-300"
                         >
                             Explore All Countries
-                            <ArrowRight size={18} />
+                            <MoveRight size={18} />
                         </motion.button>
                     </Link>
-                </div>
+                </motion.div>
+
             </div>
         </section>
     );

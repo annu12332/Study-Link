@@ -1,56 +1,35 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
+import axios from 'axios';
 import { FaStar, FaCheckCircle, FaQuoteLeft, FaGoogle, FaUniversity, FaGraduationCap } from 'react-icons/fa';
 
 const ReviewsPage = () => {
-    const reviews = [
-        {
-            id: 1,
-            name: "Ferdouse ali Meraz",
-            date: "Sep 03, 2025",
-            university: "University of Debrecen",
-            program: "Vehicle Engineering",
-            image: "https://api.dicebear.com/7.x/avataaars/svg?seed=Ferdouse",
-            comment: "Study Link help me a lot at visa processing of Hungary. Now I have got chance at University of Debrecen in Vehicle Engineering program.",
-            rating: 5
-        },
-        {
-            id: 2,
-            name: "Tania Islam",
-            date: "Aug 30, 2025",
-            university: "Canada Top University",
-            program: "Business Studies",
-            image: "https://images.pexels.com/photos/1181690/pexels-photo-1181690.jpeg?auto=compress&cs=tinysrgb&w=150",
-            comment: "Thank you Study Link. They try to make things easier and help me out throughout this journey and fulfill my dream.",
-            rating: 5
-        },
-        {
-            id: 3,
-            name: "Lamiya Alam",
-            date: "Aug 28, 2025",
-            university: "Malaysian University",
-            program: "General Studies",
-            image: "https://images.pexels.com/photos/712513/pexels-photo-712513.jpeg?auto=compress&cs=tinysrgb&w=150",
-            comment: "I can't speak highly enough of my experience with Study Link BD. They handled everything for my Malaysian student visa.",
-            rating: 5
-        },
-        {
-            id: 4,
-            name: "Samiur Rahman",
-            date: "Aug 20, 2025",
-            university: "Monash University",
-            program: "Information Tech",
-            image: "https://api.dicebear.com/7.x/avataaars/svg?seed=Samiur",
-            comment: "Extremely professional and transparent service. The best consultancy in Dhaka for Australia study visa.",
-            rating: 5
+    const [reviews, setReviews] = useState([]);
+    const [loading, setLoading] = useState(true);
+
+    // Database theke approved review fetch korar function
+    const fetchApprovedReviews = async () => {
+        try {
+            const res = await axios.get('http://localhost:5000/api/reviews/approved');
+            if (res.data.success) {
+                setReviews(res.data.data);
+            }
+        } catch (err) {
+            console.error("Error fetching reviews:", err);
+        } finally {
+            setLoading(false);
         }
-    ];
+    };
+
+    useEffect(() => {
+        fetchApprovedReviews();
+    }, []);
 
     return (
         <section className="bg-[#fcfcfd] py-12 md:py-16 px-4 md:px-6 relative overflow-hidden">
             <div className="max-w-7xl mx-auto">
                 
-                {/* --- Header Section - Optimized --- */}
+                {/* --- Header Section --- */}
                 <div className="flex flex-col md:flex-row justify-between items-center md:items-end mb-10 gap-6">
                     <div className="text-center md:text-left">
                         <span className="text-blue-600 text-[9px] font-black tracking-[0.3em] uppercase block mb-2">TESTIMONIALS</span>
@@ -83,66 +62,83 @@ const ReviewsPage = () => {
                     </div>
                 </div>
 
-                {/* --- Grid: 2 columns on Mobile, 4 on MD --- */}
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-5">
-                    {reviews.map((rev, index) => (
-                        <motion.div
-                            key={rev.id}
-                            initial={{ opacity: 0, y: 15 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: index * 0.05 }}
-                            className="bg-white p-4 md:p-6 rounded-2xl border border-slate-100 shadow-sm hover:shadow-xl hover:shadow-blue-200/20 transition-all duration-500 flex flex-col h-full group"
-                        >
-                            {/* Profile Header */}
-                            <div className="flex flex-col items-center md:items-start text-center md:text-left gap-3 mb-4">
-                                <div className="relative shrink-0">
-                                    <div className="w-10 h-10 md:w-14 md:h-14 rounded-xl overflow-hidden ring-2 ring-slate-50 group-hover:ring-blue-100 transition-all">
-                                        <img src={rev.image} alt={rev.name} className="w-full h-full object-cover" />
+                {/* --- Dynamic Grid --- */}
+                {loading ? (
+                    <div className="text-center py-20 text-slate-400 font-bold uppercase tracking-widest animate-pulse">
+                        Loading Stories...
+                    </div>
+                ) : (
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-5">
+                        {reviews.map((rev, index) => (
+                            <motion.div
+                                key={rev._id} // MongoDB ID use kora hoyeche
+                                initial={{ opacity: 0, y: 15 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: index * 0.05 }}
+                                className="bg-white p-4 md:p-6 rounded-2xl border border-slate-100 shadow-sm hover:shadow-xl hover:shadow-blue-200/20 transition-all duration-500 flex flex-col h-full group"
+                            >
+                                {/* Profile Header */}
+                                <div className="flex flex-col items-center md:items-start text-center md:text-left gap-3 mb-4">
+                                    <div className="relative shrink-0">
+                                        <div className="w-10 h-10 md:w-14 md:h-14 rounded-xl overflow-hidden ring-2 ring-slate-50 group-hover:ring-blue-100 transition-all bg-blue-50 flex items-center justify-center text-blue-600 font-black">
+                                            {/* Image thakle image, na thakle Initial letter */}
+                                            {rev.image ? (
+                                                <img src={rev.image} alt={rev.name} className="w-full h-full object-cover" />
+                                            ) : (
+                                                <span className="text-lg uppercase">{rev.name[0]}</span>
+                                            )}
+                                        </div>
+                                        <div className="absolute -bottom-1 -right-1 bg-blue-600 text-white p-1 rounded shadow-lg hidden md:block scale-75">
+                                            <FaQuoteLeft size={8} />
+                                        </div>
                                     </div>
-                                    <div className="absolute -bottom-1 -right-1 bg-blue-600 text-white p-1 rounded shadow-lg hidden md:block scale-75">
-                                        <FaQuoteLeft size={8} />
+                                    <div className="overflow-hidden w-full">
+                                        <h4 className="font-black text-slate-900 text-[10px] md:text-sm leading-tight uppercase italic truncate">{rev.name}</h4>
+                                        <div className="flex justify-center md:justify-start items-center gap-1.5 mt-0.5">
+                                            <span className="text-[7px] md:text-[8px] font-bold text-emerald-500 uppercase flex items-center gap-0.5">
+                                                <FaCheckCircle size={8}/> <span>Verified</span>
+                                            </span>
+                                            <span className="text-slate-300 text-[7px] md:text-[8px] font-bold uppercase">
+                                                {new Date(rev.createdAt).toLocaleDateString('en-US', { month: 'short', day: '2-digit', year: 'numeric' })}
+                                            </span>
+                                        </div>
                                     </div>
                                 </div>
-                                <div className="overflow-hidden w-full">
-                                    <h4 className="font-black text-slate-900 text-[10px] md:text-sm leading-tight uppercase italic truncate">{rev.name}</h4>
-                                    <div className="flex justify-center md:justify-start items-center gap-1.5 mt-0.5">
-                                        <span className="text-[7px] md:text-[8px] font-bold text-emerald-500 uppercase flex items-center gap-0.5">
-                                            <FaCheckCircle size={8}/> <span className="hidden xs:inline">Verified</span>
-                                        </span>
-                                        <span className="text-slate-300 text-[7px] md:text-[8px] font-bold uppercase">{rev.date}</span>
+
+                                {/* Comment */}
+                                <div className="flex-grow">
+                                    <p className="text-slate-600 text-[9px] md:text-[13px] leading-snug md:leading-relaxed font-medium mb-4 italic line-clamp-4 md:line-clamp-5">
+                                        "{rev.message}"
+                                    </p>
+                                </div>
+
+                                {/* Info Footer */}
+                                <div className="pt-3 border-t border-slate-50 mt-auto space-y-1.5">
+                                    <div className="flex items-start gap-1.5">
+                                        <FaUniversity className="text-blue-600 mt-0.5 shrink-0" size={10} />
+                                        <div className="text-[8px] md:text-[10px] font-black text-slate-800 uppercase tracking-tight leading-tight line-clamp-1">
+                                            {rev.university || "Global Institution"}
+                                        </div>
+                                    </div>
+                                    <div className="flex items-start gap-1.5">
+                                        <FaGraduationCap className="text-slate-400 mt-0.5 shrink-0" size={10} />
+                                        <div className="text-[7px] md:text-[9px] font-bold text-slate-500 uppercase tracking-tighter leading-tight line-clamp-1">
+                                            {rev.course || "Higher Education"}
+                                        </div>
+                                    </div>
+                                    <div className="flex gap-0.5 pt-1">
+                                        {[...Array(Number(rev.rating))].map((_, i) => (
+                                            <FaStar key={i} className="text-orange-400" size={7} />
+                                        ))}
                                     </div>
                                 </div>
-                            </div>
+                            </motion.div>
+                        ))}
+                    </div>
+                )}
 
-                            {/* Comment */}
-                            <div className="flex-grow">
-                                <p className="text-slate-600 text-[9px] md:text-[13px] leading-snug md:leading-relaxed font-medium mb-4 italic line-clamp-4 md:line-clamp-5">
-                                    "{rev.comment}"
-                                </p>
-                            </div>
-
-                            {/* Info Footer */}
-                            <div className="pt-3 border-t border-slate-50 mt-auto space-y-1.5">
-                                <div className="flex items-start gap-1.5">
-                                    <FaUniversity className="text-blue-600 mt-0.5 shrink-0" size={10} />
-                                    <div className="text-[8px] md:text-[10px] font-black text-slate-800 uppercase tracking-tight leading-tight line-clamp-1">{rev.university}</div>
-                                </div>
-                                <div className="flex items-start gap-1.5">
-                                    <FaGraduationCap className="text-slate-400 mt-0.5 shrink-0" size={10} />
-                                    <div className="text-[7px] md:text-[9px] font-bold text-slate-500 uppercase tracking-tighter leading-tight line-clamp-1">{rev.program}</div>
-                                </div>
-                                <div className="flex gap-0.5 pt-1">
-                                    {[...Array(rev.rating)].map((_, i) => (
-                                        <FaStar key={i} className="text-orange-400" size={7} />
-                                    ))}
-                                </div>
-                            </div>
-                        </motion.div>
-                    ))}
-                </div>
-
-                {/* --- CTA Action - Compact --- */}
+                {/* --- CTA Action --- */}
                 <motion.div 
                     initial={{ opacity: 0 }}
                     whileInView={{ opacity: 1 }}

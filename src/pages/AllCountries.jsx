@@ -1,77 +1,136 @@
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import { HiArrowRight, HiStar } from 'react-icons/hi';
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import { FaArrowRight, FaMapMarkerAlt, FaUniversity } from "react-icons/fa";
 
 const AllCountries = () => {
-    const [data, setData] = useState(null);
+    const [countries, setCountries] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
 
     useEffect(() => {
-        fetch('/country.json') 
-            .then(res => res.json())
-            .then(resData => {
-                setData(resData);
+        fetch("http://localhost:5000/api/countries")
+            .then((res) => {
+                if (!res.ok) throw new Error("Failed to fetch data");
+                return res.json();
+            })
+            .then((data) => {
+                /**
+                 * logic: যদি ব্যাকএন্ড সরাসরি [{}, {}] পাঠায় তবে data সেট হবে।
+                 * যদি { data: [{}, {}] } বা { countries: [{}, {}] } পাঠায় তবে সেটি হ্যান্ডেল করবে।
+                 */
+                if (Array.isArray(data)) {
+                    setCountries(data);
+                } else if (data.data && Array.isArray(data.data)) {
+                    setCountries(data.data);
+                } else if (data.countries && Array.isArray(data.countries)) {
+                    setCountries(data.countries);
+                } else {
+                    setCountries([]); // যদি কোনোভাবেই অ্যারে না পায়
+                }
                 setLoading(false);
             })
-            .catch(err => console.error("Error:", err));
+            .catch((err) => {
+                console.error("Fetch error:", err);
+                setError(err.message);
+                setLoading(false);
+                setCountries([]); // এরর হলেও স্টেট যেন অ্যারে থাকে
+            });
     }, []);
 
-    if (loading) return <div className="h-screen flex items-center justify-center font-black text-blue-600 tracking-widest">LOADING...</div>;
+    // --- Loading State ---
+    if (loading) {
+        return (
+            <div className="flex flex-col justify-center items-center min-h-[400px] gap-4">
+                <div className="animate-spin rounded-full h-12 w-12 border-t-4 border-blue-600 border-opacity-20 border-t-blue-600"></div>
+                <p className="text-slate-500 font-medium animate-pulse">Loading destinations...</p>
+            </div>
+        );
+    }
+
+    // --- Error State ---
+    if (error) {
+        return (
+            <div className="text-center py-20">
+                <p className="text-red-500 font-bold">Error: {error}</p>
+                <button
+                    onClick={() => window.location.reload()}
+                    className="mt-4 px-4 py-2 bg-blue-600 text-white rounded-lg"
+                >
+                    Try Again
+                </button>
+            </div>
+        );
+    }
 
     return (
-        <section className="py-12 mt-14 md:py-24 bg-slate-50 min-h-screen">
-            <div className="max-w-7xl mx-auto px-4 md:px-6">
-                <div className="text-center mb-10 md:mb-16">
-                    <h2 className="text-3xl md:text-5xl font-black text-slate-900 tracking-tighter uppercase italic">
-                        Explore Destinations
-                    </h2>
-                    <p className="text-slate-500 mt-2 md:mt-4 font-bold uppercase tracking-widest text-[10px] md:text-sm">
-                        Pick your dream country for study
-                    </p>
-                </div>
+        <div className="max-w-7xl mx-auto p-6">
+            {/* Header */}
+            <div className="mb-12">
+                <h2 className="text-4xl font-black text-slate-800 tracking-tight">
+                    Study Destinations
+                </h2>
+                <div className="w-20 h-1.5 bg-blue-600 mt-2 rounded-full"></div>
+            </div>
 
-                {/* Mobile: 2 columns (grid-cols-2), Desktop: 3 columns (lg:grid-cols-3) */}
-                <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 md:gap-8">
-                    {data?.countries?.map((item) => (
-                        <Link 
-                            to={`/country/${item.slug}`} 
-                            key={item.slug} 
-                            className="group bg-white rounded-2xl md:rounded-[2.5rem] overflow-hidden shadow-lg shadow-slate-200/50 border border-slate-100 hover:-translate-y-2 transition-all duration-500"
+            {/* Main Content */}
+            {(!countries || countries.length === 0) ? (
+                <div className="text-center py-20 bg-slate-50 rounded-[2rem] border-2 border-dashed border-slate-200">
+                    <p className="text-slate-400 text-lg font-medium">No countries found in the database.</p>
+                </div>
+            ) : (
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    {countries.map((country) => (
+                        <Link
+                            key={country._id}
+                            to={`/country/${country.slug}`}
+                            className="group bg-white rounded-[2.5rem] overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 border border-slate-100 flex flex-col"
                         >
-                            {/* Image Section - Adjusted height for mobile */}
-                            <div className="relative h-40 md:h-64 overflow-hidden">
-                                <img src={item.image} alt={item.country} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
-                                {item.is_popular && (
-                                    <div className="absolute top-2 left-2 md:top-6 md:left-6 bg-blue-600 text-white px-2 py-1 md:px-4 md:py-2 rounded-full text-[7px] md:text-[10px] font-black uppercase tracking-widest flex items-center gap-1 md:gap-2 shadow-lg">
-                                        <HiStar /> <span className="hidden xs:block">Popular</span>
+                            {/* Image Section */}
+                            <div className="relative h-60 overflow-hidden">
+                                <img
+                                    src={country.image || "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=1000&auto=format&fit=crop"}
+                                    alt={country.country}
+                                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                                />
+                                {country.is_popular && (
+                                    <div className="absolute top-5 left-5 bg-orange-500 text-white text-[10px] font-black px-3 py-1.5 rounded-full shadow-lg tracking-widest uppercase">
+                                        Popular
                                     </div>
                                 )}
                             </div>
-                            
-                            {/* Content Section - Compact for mobile */}
-                            <div className="p-4 md:p-8">
-                                <h3 className="text-sm md:text-2xl font-black text-slate-900 mb-1 md:mb-2 uppercase italic tracking-tight truncate">
-                                    {item.country}
-                                </h3>
-                                {/* Mobile এ ডেসক্রিপশন হাইড রাখা ভালো যাতে কার্ড ক্লিন থাকে */}
-                                <p className="hidden md:block text-slate-500 text-sm font-medium mb-6 line-clamp-2">
-                                    {item.special_highlights}
-                                </p>
-                                
-                                <div className="flex items-center justify-between border-t border-slate-50 pt-3 md:pt-6">
-                                    <span className="text-[8px] md:text-xs font-black text-slate-400 uppercase tracking-widest truncate">
-                                        {item.at_a_glance.capital}
+
+                            {/* Info Section */}
+                            <div className="p-8 flex flex-col flex-grow">
+                                <div className="flex items-center gap-2 text-blue-600 mb-3">
+                                    <FaMapMarkerAlt size={12} />
+                                    <span className="text-[10px] font-black uppercase tracking-[0.2em]">
+                                        {country.at_a_glance?.capital || "Explore More"}
                                     </span>
-                                    <div className="text-blue-600 font-black text-[9px] md:text-xs uppercase tracking-widest flex items-center gap-1 md:gap-2 group-hover:gap-3 transition-all">
-                                        <span className="hidden sm:block">Explore</span> <HiArrowRight />
+                                </div>
+
+                                <h3 className="text-2xl font-black text-slate-800 mb-3 group-hover:text-blue-600 transition-colors">
+                                    {country.country}
+                                </h3>
+
+                                <p className="text-slate-500 text-sm leading-relaxed line-clamp-2 mb-6">
+                                    {country.special_highlights || `Discover educational opportunities and cultural experiences in ${country.country}.`}
+                                </p>
+
+                                <div className="mt-auto pt-6 border-t border-slate-50 flex justify-between items-center">
+                                    <div className="flex items-center gap-2 text-slate-400 font-bold text-xs">
+                                        <FaUniversity />
+                                        <span>{country.institutes?.length || 0} Institutes</span>
+                                    </div>
+                                    <div className="w-10 h-10 rounded-2xl bg-blue-50 text-blue-600 flex items-center justify-center group-hover:bg-blue-600 group-hover:text-white transition-all duration-300">
+                                        <FaArrowRight size={14} />
                                     </div>
                                 </div>
                             </div>
                         </Link>
                     ))}
                 </div>
-            </div>
-        </section>
+            )}
+        </div>
     );
 };
 
