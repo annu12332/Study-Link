@@ -25,7 +25,7 @@ const ManageApplications = () => {
 
             setLoading(true)
 
-            const res = await axios.get("http://localhost:5000/api/admin/applications")
+            const res = await axios.get("https://studylinkserver.thinkcodify.site/api/admin/applications")
 
             if (res.data?.success) {
 
@@ -53,7 +53,7 @@ const ManageApplications = () => {
 
         try {
 
-            await axios.patch(`http://localhost:5000/api/admin/applications/${id}/status`, {
+            await axios.patch(`https://studylinkserver.thinkcodify.site/api/admin/applications/${id}/status`, {
                 status: newStatus
             })
 
@@ -83,7 +83,7 @@ const ManageApplications = () => {
 
         try {
 
-            await axios.delete(`http://localhost:5000/api/admin/applications/${id}`)
+            await axios.delete(`https://studylinkserver.thinkcodify.site/api/admin/applications/${id}`)
 
             setApps(prev => prev.filter(app => app._id !== id))
 

@@ -8,7 +8,7 @@ const CountryInstitutes = () => {
 
     useEffect(() => {
 
-        fetch(`http://localhost:5000/api/country/${slug}`)
+        fetch(`https://studylinkserver.thinkcodify.site/api/country/${slug}`)
             .then(res => res.json())
             .then(data => setCountry(data));
 

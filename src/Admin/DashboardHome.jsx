@@ -17,9 +17,9 @@ const DashboardHome = () => {
             try {
                 // Backend theke dynamic data fetch kora
                 const [appRes, instRes, storyRes] = await Promise.all([
-                    axios.get('http://localhost:5000/api/admin/applications'),
-                    axios.get('http://localhost:5000/api/all-institutes'),
-                    axios.get('http://localhost:5000/api/events')
+                    axios.get('https://studylinkserver.thinkcodify.site/api/admin/applications'),
+                    axios.get('https://studylinkserver.thinkcodify.site/api/all-institutes'),
+                    axios.get('https://studylinkserver.thinkcodify.site/api/events')
                 ]);
 
                 setStats({

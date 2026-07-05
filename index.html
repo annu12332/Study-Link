@@ -2,12 +2,70 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="icon" type="image/png" href="/assets/logo.png" />
+    <link rel="manifest" href="/manifest.json">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>study-link</title>
   </head>
   <body>
+    <div id="install-popup" style="display: none; position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); background: #fff; padding: 15px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.2); z-index: 9999; width: 90%; max-width: 400px; text-align: center;">
+      <p style="margin: 0 0 10px; color: #333; font-family: sans-serif;">Add <b>StudyLink</b> to your Home Screen?</p>
+      <button id="install-btn" style="background: #007bff; color: #fff; border: none; padding: 8px 20px; border-radius: 5px; cursor: pointer; margin-right: 10px;">Install</button>
+      <button id="close-popup" style="background: #eee; color: #333; border: none; padding: 8px 20px; border-radius: 5px; cursor: pointer;">Not Now</button>
+    </div>
+
     <div id="root"></div>
+    
     <script type="module" src="/src/main.jsx"></script>
+
+    <script>
+      // 1. Service Worker Registration
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          // sw.js root directory-te (index.html er sathe) thakte hobe
+          navigator.serviceWorker.register('/sw.js').then(reg => {
+            console.log('SW Registered');
+          }).catch(err => {
+            console.log('SW Registration Failed', err);
+          });
+        });
+      }
+
+      // 2. Install Popup Logic
+      let deferredPrompt;
+      const installPopup = document.getElementById('install-popup');
+      const installBtn = document.getElementById('install-btn');
+      const closeBtn = document.getElementById('close-popup');
+
+      window.addEventListener('beforeinstallprompt', (e) => {
+        e.preventDefault();
+        deferredPrompt = e;
+        // User page-e ashle 2 second por popup-ti dekhabe
+        setTimeout(() => {
+          installPopup.style.display = 'block';
+        }, 2000);
+      });
+
+      installBtn.addEventListener('click', async () => {
+        if (deferredPrompt) {
+          deferredPrompt.prompt();
+          const { outcome } = await deferredPrompt.userChoice;
+          console.log(`User response: ${outcome}`);
+          deferredPrompt = null;
+          installPopup.style.display = 'none';
+        }
+      });
+
+      closeBtn.addEventListener('click', () => {
+        installPopup.style.display = 'none';
+      });
+
+      // Browser-e jodi age thekei install thake, popup dekhabe na
+      window.addEventListener('appinstalled', () => {
+        installPopup.style.display = 'none';
+        deferredPrompt = null;
+        console.log('PWA installed successfully');
+      });
+    </script>
   </body>
 </html>

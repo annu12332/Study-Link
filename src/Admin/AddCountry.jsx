@@ -24,7 +24,7 @@ const AddCountryFull = () => {
     // --- Fetch Countries ---
     const fetchCountries = async () => {
         try {
-            const res = await axios.get("http://localhost:5000/api/countries");
+            const res = await axios.get("https://studylinkserver.thinkcodify.site/api/countries");
             setCountries(res.data.data);
         } catch (err) {
             console.error("Error fetching countries:", err);
@@ -128,10 +128,10 @@ const AddCountryFull = () => {
         e.preventDefault();
         try {
             if (editingId) {
-                await axios.patch(`http://localhost:5000/api/admin/country/${editingId}`, formData);
+                await axios.patch(`https://studylinkserver.thinkcodify.site/api/admin/country/${editingId}`, formData);
                 alert("Country Updated Successfully!");
             } else {
-                await axios.post("http://localhost:5000/api/admin/add-country", formData);
+                await axios.post("https://studylinkserver.thinkcodify.site/api/admin/add-country", formData);
                 alert("Country Added Successfully!");
             }
             resetForm();
@@ -146,7 +146,7 @@ const AddCountryFull = () => {
     const handleDelete = async (id) => {
         if (window.confirm("Are you sure you want to delete this country?")) {
             try {
-                await axios.delete(`http://localhost:5000/api/admin/country/${id}`);
+                await axios.delete(`https://studylinkserver.thinkcodify.site/api/admin/country/${id}`);
                 alert("Deleted Successfully");
                 fetchCountries();
             } catch (err) {

@@ -10,7 +10,7 @@ const AdminReviews = () => {
     // Fetch All Reviews
     const fetchReviews = async () => {
         try {
-            const res = await axios.get('http://localhost:5000/api/admin/all-reviews');
+            const res = await axios.get('https://studylinkserver.thinkcodify.site/api/admin/all-reviews');
             if (res.data.success) {
                 setReviews(res.data.data);
             }
@@ -28,7 +28,7 @@ const AdminReviews = () => {
     // Approve Review
     const handleApprove = async (id) => {
         try {
-            const res = await axios.patch(`http://localhost:5000/api/admin/approve-review/${id}`);
+            const res = await axios.patch(`https://studylinkserver.thinkcodify.site/api/admin/approve-review/${id}`);
             if (res.data.success) {
                 Swal.fire("Approved!", "Review is now live.", "success");
                 fetchReviews(); // Refresh list
@@ -51,7 +51,7 @@ const AdminReviews = () => {
         }).then(async (result) => {
             if (result.isConfirmed) {
                 try {
-                    await axios.delete(`http://localhost:5000/api/admin/delete-review/${id}`);
+                    await axios.delete(`https://studylinkserver.thinkcodify.site/api/admin/delete-review/${id}`);
                     Swal.fire("Deleted!", "Review has been removed.", "success");
                     fetchReviews();
                 } catch (err) {

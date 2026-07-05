@@ -8,7 +8,7 @@ import {
     FaGlobeAmericas, FaChartLine, FaExternalLinkAlt, FaCalendarAlt
 } from 'react-icons/fa';
 
-const API_BASE_URL = 'http://localhost:5000/api/eligibility';
+const API_BASE_URL = 'https://studylinkserver.thinkcodify.site/api/eligibility';
 
 const ManageEligibility = () => {
     const [requests, setRequests] = useState([]);

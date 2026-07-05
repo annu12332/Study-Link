@@ -33,7 +33,7 @@ const FeedbackButton = () => {
 
         try {
             // Backend endpoint URL check korun
-            const res = await axios.post('http://localhost:5000/api/reviews/submit', feedbackData);
+            const res = await axios.post('https://studylinkserver.thinkcodify.site/api/reviews/submit', feedbackData);
             
             if (res.data.success || res.status === 201 || res.status === 200) {
                 Swal.fire({

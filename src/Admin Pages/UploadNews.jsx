@@ -17,7 +17,7 @@ const UploadNews = () => {
 
     const fetchNews = async () => {
         try {
-            const res = await axios.get('http://localhost:5000/api/news');
+            const res = await axios.get('https://studylinkserver.thinkcodify.site/api/news');
             if (res.data.success) setNewsList(res.data.data);
         } catch (err) { console.error("Fetch error", err); }
     };
@@ -27,7 +27,7 @@ const UploadNews = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const res = await axios.post('http://localhost:5000/api/admin/upload-news', formData);
+            const res = await axios.post('https://studylinkserver.thinkcodify.site/api/admin/upload-news', formData);
             if (res.data.success) {
                 Swal.fire("Success", "News Published Successfully!", "success");
                 setFormData({ title: '', description: '', details: '', category: 'Notice', image: '', date: '', time: '' });
@@ -46,7 +46,7 @@ const UploadNews = () => {
             confirmButtonText: "Yes, delete it!"
         }).then(async (result) => {
             if (result.isConfirmed) {
-                await axios.delete(`http://localhost:5000/api/admin/delete-news/${id}`);
+                await axios.delete(`https://studylinkserver.thinkcodify.site/api/admin/delete-news/${id}`);
                 fetchNews();
             }
         });

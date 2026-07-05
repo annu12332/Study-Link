@@ -10,7 +10,7 @@ const ManageServices = () => {
     const [editId, setEditId] = useState(null);
     const [loading, setLoading] = useState(true);
 
-    const API_BASE_URL = 'http://localhost:5000/api/services';
+    const API_BASE_URL = 'https://studylinkserver.thinkcodify.site/api/services';
 
     useEffect(() => { 
         fetchServices(); 

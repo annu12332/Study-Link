@@ -23,7 +23,7 @@ const EventDetails = () => {
     const [submitting, setSubmitting] = useState(false);
 
     // API Base URL (আপনার ব্যাকেন্ড পোর্ট অনুযায়ী পরিবর্তন করুন)
-    const API_URL = "http://localhost:5000/api";
+    const API_URL = "https://studylinkserver.thinkcodify.site/api";
 
     useEffect(() => {
         const fetchEvent = async () => {

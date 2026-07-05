@@ -35,7 +35,7 @@ const ApplyForm = () => {
         setLoading(true);
         try {
             // Backend API endpoint - applications/apply
-            await axios.post('http://localhost:5000/api/applications/apply', formData);
+            await axios.post('https://studylinkserver.thinkcodify.site/api/applications/apply', formData);
             setIsSubmitted(true);
         } catch (err) {
             console.error("Submission error:", err);

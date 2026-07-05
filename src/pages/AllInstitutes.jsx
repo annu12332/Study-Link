@@ -12,7 +12,7 @@ const AllInstitutes = () => {
     useEffect(() => {
         const fetchInstitutes = async () => {
             try {
-                const res = await axios.get('http://localhost:5000/api/all-institutes');
+                const res = await axios.get('https://studylinkserver.thinkcodify.site/api/all-institutes');
                 if (res.data.success) {
                     setData(res.data.data);
                 }

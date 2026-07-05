@@ -19,7 +19,7 @@ const AddInstitute = () => {
     }, []);
 
     const fetchInstitutes = async () => {
-        const res = await axios.get("http://localhost:5000/api/all-institutes");
+        const res = await axios.get("https://studylinkserver.thinkcodify.site/api/all-institutes");
         setInstitutes(res.data.data);
     };
 
@@ -40,12 +40,12 @@ const AddInstitute = () => {
         try {
             if (editingId) {
                 await axios.patch(
-                    `http://localhost:5000/api/admin/institute/${editingId}`,
+                    `https://studylinkserver.thinkcodify.site/api/admin/institute/${editingId}`,
                     formData
                 );
             } else {
                 await axios.post(
-                    "http://localhost:5000/api/admin/add-institute",
+                    "https://studylinkserver.thinkcodify.site/api/admin/add-institute",
                     formData
                 );
             }
@@ -73,7 +73,7 @@ const AddInstitute = () => {
 
     const handleDelete = async (id) => {
         if (window.confirm("Are you sure you want to delete this institute?")) {
-            await axios.delete(`http://localhost:5000/api/admin/institute/${id}`);
+            await axios.delete(`https://studylinkserver.thinkcodify.site/api/admin/institute/${id}`);
             fetchInstitutes();
         }
     };

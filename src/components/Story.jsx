@@ -18,7 +18,7 @@ const SuccessStories = () => {
 
   const fetchStories = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/reviews/approved");
+      const res = await axios.get("https://studylinkserver.thinkcodify.site/api/reviews/approved");
       if (res.data.success) {
         setStories(res.data.data.slice(0, 5)); // limit 5
       }

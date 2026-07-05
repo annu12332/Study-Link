@@ -10,7 +10,7 @@ const ReviewsPage = () => {
     // Database theke approved review fetch korar function
     const fetchApprovedReviews = async () => {
         try {
-            const res = await axios.get('http://localhost:5000/api/reviews/approved');
+            const res = await axios.get('https://studylinkserver.thinkcodify.site/api/reviews/approved');
             if (res.data.success) {
                 setReviews(res.data.data);
             }

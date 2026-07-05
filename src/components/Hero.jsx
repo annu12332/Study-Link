@@ -100,13 +100,13 @@ const Hero = () => {
                                     </button>
                                 </Link>
 
-                                {/* 2. Start Application (Vibrant Blue) */}
+                                {/* 2. Start Application (Vibrant Blue) 
                                 <Link to="/apply">
                                     <button className="flex items-center gap-3 px-5 py-2.5 bg-[#0055FF] hover:bg-blue-700 text-white rounded-lg font-bold text-[11px] uppercase tracking-widest transition-all shadow-md active:scale-95">
                                         Start Application
                                         <HiArrowRight size={12} />
-                                    </button>
-                                </Link>
+                                    </button> 
+                                </Link>*/}
                             </div>
                         </motion.div>
                     </AnimatePresence>

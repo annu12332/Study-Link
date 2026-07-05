@@ -8,7 +8,7 @@ const AllCountries = () => {
     const [error, setError] = useState(null);
 
     useEffect(() => {
-        fetch("http://localhost:5000/api/countries")
+        fetch("https://studylinkserver.thinkcodify.site/api/countries")
             .then((res) => {
                 if (!res.ok) throw new Error("Failed to fetch data");
                 return res.json();

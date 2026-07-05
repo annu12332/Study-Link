@@ -10,7 +10,7 @@ const Programmes = () => {
 
     useEffect(() => {
 
-        fetch(`http://localhost:5000/api/programmes/${countrySlug}/${instSlug}`)
+        fetch(`https://studylinkserver.thinkcodify.site/api/programmes/${countrySlug}/${instSlug}`)
             .then(res => res.json())
             .then(data => {
                 setProgrammes(data);

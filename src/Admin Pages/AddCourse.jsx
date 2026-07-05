@@ -26,7 +26,7 @@ const AddCourse = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const res = await axios.post('http://localhost:5000/api/admin/add-course', courseData);
+            const res = await axios.post('https://studylinkserver.thinkcodify.site/api/admin/add-course', courseData);
             alert(res.data.message);
             // ফর্ম ক্লিয়ার করা
             setCourseData({

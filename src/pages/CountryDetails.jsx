@@ -16,7 +16,7 @@ const CountryDetails = () => {
     useEffect(() => {
         window.scrollTo(0, 0);
         setLoading(true);
-        fetch(`http://localhost:5000/api/countries/${id}`)
+        fetch(`https://studylinkserver.thinkcodify.site/api/countries/${id}`)
             .then(res => {
                 if (!res.ok) throw new Error("Country details not found");
                 return res.json();

@@ -48,9 +48,9 @@ const StatusGrid = () => {
       try {
         // Backend theke shob data eksathe fetch kora
         const [appRes, instRes, eventRes] = await Promise.all([
-          axios.get('http://localhost:5000/api/admin/applications'),
-          axios.get('http://localhost:5000/api/all-institutes'),
-          axios.get('http://localhost:5000/api/events')
+          axios.get('https://studylinkserver.thinkcodify.site/api/admin/applications'),
+          axios.get('https://studylinkserver.thinkcodify.site/api/all-institutes'),
+          axios.get('https://studylinkserver.thinkcodify.site/api/events')
         ]);
 
         setCounts({

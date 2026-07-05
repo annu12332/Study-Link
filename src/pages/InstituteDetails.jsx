@@ -16,7 +16,7 @@ const InstituteDetails = () => {
     useEffect(() => {
         const fetchDetails = async () => {
             try {
-                const res = await axios.get(`http://localhost:5000/api/all-institutes`);
+                const res = await axios.get(`https://studylinkserver.thinkcodify.site/api/all-institutes`);
                 if (res.data.success) {
                     const found = res.data.data.find(item => item.slug === slug);
                     setInst(found);

@@ -126,9 +126,9 @@ const Navbar = () => {
                                 </div>
                             </div>
 
-                            <Link to="/apply">
+                            <Link to="/eligibility">
                                 <button className="hidden lg:block bg-slate-900 hover:bg-blue-600 text-white px-7 py-3.5 rounded-2xl text-sm font-bold transition-all shadow-xl shadow-slate-200 active:scale-95">
-                                    Apply Now
+                                    Check Eligibility 
                                 </button>
                             </Link>
 
@@ -212,9 +212,9 @@ const Navbar = () => {
                                 <a href="tel:+8801969908432" className="flex items-center justify-center gap-2 w-full py-4 text-slate-600 font-bold text-sm">
                                     <HiPhone className="text-blue-600" /> +880 1234567890
                                 </a>
-                                <Link to="/apply">
+                                <Link to="/eligibility">
                                     <button className="w-full bg-blue-600 text-white py-4 rounded-2xl font-bold shadow-xl shadow-blue-100 active:scale-95 transition-transform">
-                                        Apply Now
+                                        Check Eligibility
                                     </button>
                                 </Link>
                             </div>

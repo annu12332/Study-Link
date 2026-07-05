@@ -85,7 +85,7 @@ const StudentEligibilityForm = () => {
             };
 
             const res = await axios.post(
-                "http://localhost:5000/api/check-eligibility",
+                "https://studylinkserver.thinkcodify.site/api/check-eligibility",
                 searchPayload
             );
 
@@ -126,7 +126,7 @@ const StudentEligibilityForm = () => {
 
     const submitApplication = async () => {
         try {
-            const res = await axios.post("http://localhost:5000/api/apply", {
+            const res = await axios.post("https://studylinkserver.thinkcodify.site/api/apply", {
                 courseId: selectedCourse._id,
                 ...appData,
                 userScores: formData,
@@ -218,92 +218,147 @@ const StudentEligibilityForm = () => {
             </div>
 
             {/* APPLY MODAL (Steps 1, 2, 3) */}
-            {showApplyModal && (
-                <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-[100] p-4">
-                    <div className="bg-white w-full max-w-5xl max-h-[90vh] overflow-y-auto rounded-2xl shadow-2xl relative">
-                        <div className="p-6 border-b flex justify-between items-center sticky top-0 bg-white z-10">
+{showApplyModal && (
+    <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-[100] p-4">
+        <div className="bg-white w-full max-w-5xl max-h-[90vh] overflow-y-auto rounded-2xl shadow-2xl relative">
+            <div className="p-6 border-b flex justify-between items-center sticky top-0 bg-white z-10">
+                <div>
+                    <h3 className="font-bold text-xl text-blue-900 uppercase tracking-wide">Application Form</h3>
+                    <p className="text-sm text-gray-500 font-medium">Step {currentStep} of 3</p>
+                </div>
+                <button onClick={closeApplyModal} className="text-gray-400 hover:text-red-500 transition-colors p-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                </button>
+            </div>
+
+            <div className="p-8">
+                {/* STEP 1: PERSONAL INFORMATION */}
+                {currentStep === 1 && (
+                    <div className="space-y-6">
+                        <h4 className="font-bold text-lg text-gray-700 border-b pb-2 uppercase text-sm tracking-wider">Personal Information</h4>
+                        <div className="grid md:grid-cols-2 gap-6">
+                            <div><label className="text-xs font-bold text-gray-500 uppercase">Applicant Name</label><input name="applicantName" placeholder="Full Name" onChange={handleAppChange} className="input w-full p-3 border rounded-lg mt-1" /></div>
                             <div>
-                                <h3 className="font-bold text-xl text-blue-900">Application Form</h3>
-                                <p className="text-sm text-gray-500">Step {currentStep} of 3</p>
+                                <label className="text-xs font-bold text-gray-500 uppercase">Gender</label>
+                                <div className="flex gap-6 mt-3">
+                                    <label className="flex items-center gap-2 cursor-pointer text-sm"><input type="radio" name="gender" value="Male" checked={appData.gender === "Male"} onChange={handleAppChange} /> Male</label>
+                                    <label className="flex items-center gap-2 cursor-pointer text-sm"><input type="radio" name="gender" value="Female" onChange={handleAppChange} /> Female</label>
+                                    <label className="flex items-center gap-2 cursor-pointer text-sm"><input type="radio" name="gender" value="Other" onChange={handleAppChange} /> Other</label>
+                                </div>
                             </div>
-                            <button onClick={closeApplyModal} className="text-gray-400 hover:text-red-500 transition-colors p-2">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-                            </button>
-                        </div>
-
-                        <div className="p-8">
-                            {currentStep === 1 && (
-                                <div className="space-y-6">
-                                    <h4 className="font-bold text-lg text-gray-700 border-b pb-2">Personal Information</h4>
-                                    <div className="grid md:grid-cols-2 gap-6">
-                                        <div><label className="text-xs font-bold text-gray-500">FULL NAME</label><input name="applicantName" placeholder="Full Name" onChange={handleAppChange} className="input" /></div>
-                                        <div>
-                                            <label className="text-xs font-bold text-gray-500">GENDER</label>
-                                            <div className="flex gap-6 mt-3">
-                                                <label className="flex items-center gap-2 cursor-pointer"><input type="radio" name="gender" value="Male" checked={appData.gender === "Male"} onChange={handleAppChange} /> Male</label>
-                                                <label className="flex items-center gap-2 cursor-pointer"><input type="radio" name="gender" value="Female" onChange={handleAppChange} /> Female</label>
-                                            </div>
-                                        </div>
-                                        <div><label className="text-xs font-bold text-gray-500">EMAIL</label><input name="email" placeholder="email@example.com" onChange={handleAppChange} className="input" /></div>
-                                        <div><label className="text-xs font-bold text-gray-500">MOBILE</label><input name="mobile" placeholder="+8801xxxxxxxxx" onChange={handleAppChange} className="input" /></div>
-                                        <div><label className="text-xs font-bold text-gray-500">DATE OF BIRTH</label><input type="date" name="dob" onChange={handleAppChange} className="input" /></div>
-                                        <div><label className="text-xs font-bold text-gray-500">CITY/AREA</label><input name="area" placeholder="e.g. Chittagong" onChange={handleAppChange} className="input" /></div>
-                                    </div>
-                                </div>
-                            )}
-
-                            {currentStep === 2 && (
-                                <div className="space-y-8">
-                                    <h4 className="font-bold text-lg text-gray-700 border-b pb-2">Academic Background</h4>
-                                    <div className="grid md:grid-cols-3 gap-4">
-                                        <div><label className="text-xs font-bold text-gray-400">SSC BOARD</label><input name="sscBoard" placeholder="e.g. Dhaka" onChange={handleAppChange} className="input" /></div>
-                                        <div><label className="text-xs font-bold text-gray-400">SSC YEAR</label><input name="sscYear" placeholder="2020" onChange={handleAppChange} className="input" /></div>
-                                        <div><label className="text-xs font-bold text-gray-400">SSC GPA</label><input name="sscGpaVal" placeholder="5.00" onChange={handleAppChange} className="input" /></div>
-                                        <div><label className="text-xs font-bold text-gray-400">HSC BOARD</label><input name="hscBoard" placeholder="e.g. Dhaka" onChange={handleAppChange} className="input" /></div>
-                                        <div><label className="text-xs font-bold text-gray-400">HSC YEAR</label><input name="hscYear" placeholder="2022" onChange={handleAppChange} className="input" /></div>
-                                        <div><label className="text-xs font-bold text-gray-400">HSC GPA</label><input name="hscGpaVal" placeholder="5.00" onChange={handleAppChange} className="input" /></div>
-                                    </div>
-                                    <h4 className="font-bold text-lg text-gray-700 border-b pb-2 mt-6">Graduation Info (Optional)</h4>
-                                    <div className="grid md:grid-cols-3 gap-4">
-                                        <input name="ugUni" placeholder="University Name" onChange={handleAppChange} className="input" />
-                                        <input name="ugDegree" placeholder="Degree (BSc/BBA)" onChange={handleAppChange} className="input" />
-                                        <input name="ugGpa" placeholder="CGPA" onChange={handleAppChange} className="input" />
-                                    </div>
-                                </div>
-                            )}
-
-                            {currentStep === 3 && (
-                                <div className="space-y-6">
-                                    <div className="bg-blue-50 p-6 rounded-xl border border-blue-100 mb-6">
-                                        <p className="text-blue-900 font-bold text-lg">You are applying for:</p>
-                                        <p className="text-blue-700">{selectedCourse?.subject} at <span className="underline">{selectedCourse?.university}</span></p>
-                                    </div>
-                                    <h4 className="font-bold text-lg text-gray-700 border-b pb-2">Language Proficiency</h4>
-                                    <div className="grid md:grid-cols-3 gap-4">
-                                        <div><label className="text-xs font-bold text-gray-400">IELTS</label><input name="ielts" placeholder="Score" onChange={handleAppChange} className="input" /></div>
-                                        <div><label className="text-xs font-bold text-gray-400">PTE</label><input name="pte" placeholder="Score" onChange={handleAppChange} className="input" /></div>
-                                        <div><label className="text-xs font-bold text-gray-400">DUOLINGO</label><input name="duolingo" placeholder="Score" onChange={handleAppChange} className="input" /></div>
-                                    </div>
-                                </div>
-                            )}
-                        </div>
-
-                        <div className="p-6 border-t flex justify-between bg-gray-50">
-                            {currentStep > 1 ? (
-                                <button onClick={() => setCurrentStep(currentStep - 1)} className="px-8 py-3 border-2 border-gray-300 rounded-lg font-bold text-gray-600 hover:bg-gray-100 transition">
-                                    BACK
-                                </button>
-                            ) : <div></div>}
-                            <button
-                                onClick={currentStep === 3 ? submitApplication : () => setCurrentStep(currentStep + 1)}
-                                className="bg-blue-600 text-white px-10 py-3 rounded-lg font-bold hover:bg-blue-700 transition shadow-lg shadow-blue-200"
-                            >
-                                {currentStep === 3 ? "SUBMIT APPLICATION" : "NEXT STEP"}
-                            </button>
+                            <div><label className="text-xs font-bold text-gray-500 uppercase">Email Address</label><input name="email" type="email" placeholder="email@example.com" onChange={handleAppChange} className="input w-full p-3 border rounded-lg mt-1" /></div>
+                            <div><label className="text-xs font-bold text-gray-500 uppercase">Guardian's Name</label><input name="guardianName" placeholder="Father's/Mother's Name" onChange={handleAppChange} className="input w-full p-3 border rounded-lg mt-1" /></div>
+                            <div><label className="text-xs font-bold text-gray-500 uppercase">Area</label><input name="area" placeholder="e.g. Dhanmondi, Dhaka" onChange={handleAppChange} className="input w-full p-3 border rounded-lg mt-1" /></div>
+                            <div><label className="text-xs font-bold text-gray-500 uppercase">Date of Birth</label><input type="date" name="dob" onChange={handleAppChange} className="input w-full p-3 border rounded-lg mt-1" /></div>
+                            <div><label className="text-xs font-bold text-gray-500 uppercase">Mobile No.</label><input name="mobile" placeholder="+8801xxxxxxxxx" onChange={handleAppChange} className="input w-full p-3 border rounded-lg mt-1" /></div>
                         </div>
                     </div>
-                </div>
-            )}
+                )}
+
+                {/* STEP 2: EDUCATIONAL BACKGROUND */}
+                {currentStep === 2 && (
+                    <div className="space-y-8">
+                        <div>
+                            <h4 className="font-bold text-lg text-gray-700 border-b pb-2 uppercase text-sm tracking-wider mb-4">Schooling</h4>
+                            <div className="grid md:grid-cols-4 gap-4 items-end">
+                                <div className="text-xs font-bold text-gray-500 pb-2">LEVEL OF EDUCATION</div>
+                                <div className="text-xs font-bold text-gray-500 pb-2">BOARD/GROUP</div>
+                                <div className="text-xs font-bold text-gray-500 pb-2">YEAR OF GRADUATION</div>
+                                <div className="text-xs font-bold text-gray-500 pb-2">GRADES/CGPA</div>
+
+                                <div className="text-sm font-semibold text-gray-600">O LEVEL / SSC / DAKHIL</div>
+                                <input name="sscBoard" placeholder="DHAKA" onChange={handleAppChange} className="input p-2 border rounded" />
+                                <input name="sscYear" placeholder="2010" onChange={handleAppChange} className="input p-2 border rounded" />
+                                <input name="sscGpaVal" placeholder="4.5" onChange={handleAppChange} className="input p-2 border rounded" />
+
+                                <div className="text-sm font-semibold text-gray-600">A2 LEVEL / HSC / ALIM</div>
+                                <input name="hscBoard" placeholder="DHAKA" onChange={handleAppChange} className="input p-2 border rounded" />
+                                <input name="hscYear" placeholder="2012" onChange={handleAppChange} className="input p-2 border rounded" />
+                                <input name="hscGpaVal" placeholder="4.2" onChange={handleAppChange} className="input p-2 border rounded" />
+                            </div>
+                        </div>
+
+                        <div>
+                            <h4 className="font-bold text-lg text-gray-700 border-b pb-2 uppercase text-sm tracking-wider mb-4">Undergraduation or Postgraduation</h4>
+                            <div className="grid md:grid-cols-5 gap-3">
+                                <label className="text-[10px] font-bold text-gray-400 uppercase">University</label>
+                                <label className="text-[10px] font-bold text-gray-400 uppercase">Degree</label>
+                                <label className="text-[10px] font-bold text-gray-400 uppercase">Course</label>
+                                <label className="text-[10px] font-bold text-gray-400 uppercase">GPA</label>
+                                <label className="text-[10px] font-bold text-gray-400 uppercase">Year of Graduation</label>
+
+                                {/* UG Row */}
+                                <input name="ugUni" placeholder="University" onChange={handleAppChange} className="input p-2 border rounded text-sm" />
+                                <input name="ugDegree" placeholder="B.Sc./BBA" onChange={handleAppChange} className="input p-2 border rounded text-sm" />
+                                <input name="ugCourse" placeholder="Subject" onChange={handleAppChange} className="input p-2 border rounded text-sm" />
+                                <input name="ugGpa" placeholder="4.00" onChange={handleAppChange} className="input p-2 border rounded text-sm" />
+                                <input name="ugYear" placeholder="2016" onChange={handleAppChange} className="input p-2 border rounded text-sm" />
+                            </div>
+                        </div>
+                    </div>
+                )}
+
+                {/* STEP 3: SEARCH DETAILS & TESTING */}
+                {currentStep === 3 && (
+                    <div className="space-y-8">
+                        <div>
+                            <h4 className="font-bold text-lg text-gray-700 border-b pb-2 uppercase text-sm tracking-wider mb-4">University Search Details</h4>
+                            <div className="grid md:grid-cols-3 gap-6">
+                                <div><label className="text-xs font-bold text-gray-500 uppercase block mb-1 text-center">Desired Country</label><input name="desiredCountry" placeholder="Ex: Canada" onChange={handleAppChange} className="input w-full p-3 border rounded-lg" /></div>
+                                <div><label className="text-xs font-bold text-gray-500 uppercase block mb-1 text-center">Desired University</label><input name="desiredUni" placeholder="Ex: Capilano University" onChange={handleAppChange} className="input w-full p-3 border rounded-lg" /></div>
+                                <div><label className="text-xs font-bold text-gray-500 uppercase block mb-1 text-center">Desired Course / Subject</label><input name="desiredCourse" placeholder="Ex: Bachelor of Science" onChange={handleAppChange} className="input w-full p-3 border rounded-lg" /></div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <h4 className="font-bold text-lg text-gray-700 border-b pb-2 uppercase text-sm tracking-wider mb-4">Additional Testing Details</h4>
+                            <div className="grid md:grid-cols-2 gap-x-12 gap-y-4">
+                                <div className="flex items-center justify-between border-b pb-2">
+                                    <span className="text-sm font-bold text-gray-600">IELTS</span>
+                                    <input name="ielts" placeholder="IELTS SCORE" onChange={handleAppChange} className="border-none focus:ring-0 text-right uppercase text-sm" />
+                                </div>
+                                <div className="flex items-center justify-between border-b pb-2">
+                                    <span className="text-sm font-bold text-gray-600">UKVI</span>
+                                    <input name="ukvi" placeholder="UKVI SCORE" onChange={handleAppChange} className="border-none focus:ring-0 text-right uppercase text-sm" />
+                                </div>
+                                <div className="flex items-center justify-between border-b pb-2">
+                                    <span className="text-sm font-bold text-gray-600">PTE</span>
+                                    <input name="pte" placeholder="PTE SCORE" onChange={handleAppChange} className="border-none focus:ring-0 text-right uppercase text-sm" />
+                                </div>
+                                <div className="flex items-center justify-between border-b pb-2">
+                                    <span className="text-sm font-bold text-gray-600">DUOLINGO</span>
+                                    <input name="duolingo" placeholder="DUOLINGO SCORE" onChange={handleAppChange} className="border-none focus:ring-0 text-right uppercase text-sm" />
+                                </div>
+                                <div className="flex items-center justify-between border-b pb-2">
+                                    <span className="text-sm font-bold text-gray-600">SAT</span>
+                                    <input name="sat" placeholder="SAT SCORE" onChange={handleAppChange} className="border-none focus:ring-0 text-right uppercase text-sm" />
+                                </div>
+                                <div className="flex items-center justify-between border-b pb-2">
+                                    <span className="text-sm font-bold text-gray-600">ACT</span>
+                                    <input name="act" placeholder="ACT SCORE" onChange={handleAppChange} className="border-none focus:ring-0 text-right uppercase text-sm" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                )}
+            </div>
+
+            <div className="p-6 border-t flex justify-between bg-gray-50">
+                {currentStep > 1 ? (
+                    <button onClick={() => setCurrentStep(currentStep - 1)} className="px-8 py-3 border-2 border-gray-300 rounded-lg font-bold text-gray-600 hover:bg-gray-100 transition">
+                        BACK
+                    </button>
+                ) : <div></div>}
+                <button
+                    onClick={currentStep === 3 ? submitApplication : () => setCurrentStep(currentStep + 1)}
+                    className="bg-blue-600 text-white px-10 py-3 rounded-lg font-bold hover:bg-blue-700 transition shadow-lg shadow-blue-200"
+                >
+                    {currentStep === 3 ? "SUBMIT APPLICATION" : "NEXT STEP"}
+                </button>
+            </div>
+        </div>
+    </div>
+)}
 
             <style jsx>{`
                 .input {

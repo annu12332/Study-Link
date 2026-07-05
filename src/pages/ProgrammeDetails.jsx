@@ -11,7 +11,7 @@ const ProgrammeDetails = () => {
         const fetchProgramme = async () => {
             try {
                 const res = await fetch(
-                    `http://localhost:5000/api/programme/${programId}`
+                    `https://studylinkserver.thinkcodify.site/api/programme/${programId}`
                 );
                 const data = await res.json();
                 setProgramme(data);
